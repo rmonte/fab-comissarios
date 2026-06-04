@@ -49,7 +49,8 @@ export default function Home() {
 
   return (
     <div className="min-h-screen bg-background">
-      <header className="bg-primary text-primary-foreground px-5 pt-12 pb-6">
+      <header className="bg-primary text-primary-foreground pt-12 pb-6">
+        <div className="max-w-7xl mx-auto px-4 sm:px-5">
         <div className="flex items-center gap-4 mb-5">
           <img src={logo} alt="Insígnia FAB" className="w-14 h-14 object-contain drop-shadow-md" />
           <div>
@@ -68,11 +69,12 @@ export default function Home() {
             className="pl-9 bg-white/95 text-foreground placeholder:text-muted-foreground border-0 shadow-sm"
           />
         </form>
+        </div>
       </header>
 
       {/* Barra de tags */}
       <div className="bg-primary/5 border-b border-border px-4 py-3">
-        <div className="flex gap-2 overflow-x-auto scrollbar-none max-w-7xl mx-auto">
+        <div className="flex gap-2 overflow-x-auto scrollbar-none max-w-7xl mx-auto px-0 sm:px-1">
           <button
             onClick={() => { setActiveTag(null); setPage(1) }}
             className={`shrink-0 px-3 py-1 rounded-full text-xs font-medium border transition-colors ${
