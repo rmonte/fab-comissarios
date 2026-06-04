@@ -159,11 +159,12 @@ export default function Article() {
               {hasSections && (
                 <button
                   onClick={() => setOpenValues(allOpen ? [] : sectionIds)}
-                  className="flex items-center gap-1.5 px-3 py-1.5 rounded-lg border border-border bg-card hover:bg-muted/50 transition-colors text-sm font-medium text-foreground"
+                  aria-label={allOpen ? 'Recolher seções' : 'Expandir seções'}
+                  className="flex items-center justify-center w-8 h-8 rounded-lg border border-border bg-card hover:bg-muted/50 transition-colors"
                 >
                   {allOpen
-                    ? <><ChevronsDownUp className="w-4 h-4 text-primary" />Recolher</>
-                    : <><ChevronsUpDown className="w-4 h-4 text-primary" />Expandir</>
+                    ? <ChevronsDownUp className="w-4 h-4 text-primary" />
+                    : <ChevronsUpDown className="w-4 h-4 text-primary" />
                   }
                 </button>
               )}
@@ -173,10 +174,10 @@ export default function Article() {
                 href={pdfUrl}
                 target="_blank"
                 rel="noopener noreferrer"
-                className="flex items-center gap-2 px-3 py-1.5 rounded-lg border border-border bg-card hover:bg-muted/50 transition-colors text-sm font-medium text-foreground shrink-0"
+                aria-label="Ver PDF original"
+                className="flex items-center justify-center w-8 h-8 rounded-lg border border-border bg-card hover:bg-muted/50 transition-colors shrink-0"
               >
                 <FileText className="w-4 h-4 text-primary" />
-                Ver PDF original
               </a>
             )}
             </div>
