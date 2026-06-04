@@ -1,4 +1,5 @@
 import { useParams, Link, useNavigate } from 'react-router-dom'
+import { useEffect, useRef } from 'react'
 import { Badge } from '@/components/ui/badge'
 import { Button } from '@/components/ui/button'
 import { Card, CardContent } from '@/components/ui/card'
@@ -65,7 +66,26 @@ const proseClasses = `
 export default function Article() {
   const { slug } = useParams<{ slug: string }>()
   const navigate = useNavigate()
+  const contentRef = useRef<HTMLDivElement>(null)
   const article = slug ? getBySlug(slug) : undefined
+
+  useEffect(() => {
+    const container = contentRef.current
+    if (!container) return
+
+    function handleClick(e: MouseEvent) {
+      const target = (e.target as HTMLElement).closest('a')
+      if (!target) return
+      const href = target.getAttribute('href')
+      if (href && href.startsWith('/')) {
+        e.preventDefault()
+        navigate(href)
+      }
+    }
+
+    container.addEventListener('click', handleClick)
+    return () => container.removeEventListener('click', handleClick)
+  }, [navigate, slug])
 
   if (!article) {
     return (
@@ -142,7 +162,7 @@ export default function Article() {
       </header>
 
       {/* Conteúdo */}
-      <main className="max-w-3xl mx-auto px-4 py-6">
+      <main ref={contentRef} className="max-w-3xl mx-auto px-4 py-6">
         {hasSections ? (
           <Accordion type="multiple" defaultValue={allIds} className="space-y-1">
             {sections.map(section => (
