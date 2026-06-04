@@ -78,3 +78,12 @@ export const allTags: string[] = [
   ...new Set(articles.flatMap(a => a.tags)),
 ].sort((a, b) => a.localeCompare(b, 'pt-BR'))
 
+export const allCategories: string[] = [
+  ...new Set(articles.map(a => a.category)),
+].sort((a, b) => a.localeCompare(b, 'pt-BR'))
+
+export const categoryNames: Record<string, string> = {
+  emergencia: 'Emergências',
+  tecnico: 'Dados Técnicos',
+}
+

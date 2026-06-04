@@ -5,24 +5,43 @@ import { Badge } from '@/components/ui/badge'
 import { Button } from '@/components/ui/button'
 import { Card, CardContent } from '@/components/ui/card'
 import { Search, AlertTriangle, BookOpen, ChevronLeft, ChevronRight } from 'lucide-react'
-import { articles, allTags } from '@/lib/content'
+import { articles, allTags, allCategories, categoryNames } from '@/lib/content'
 import logo from '@/images/logo.webp'
 
 const PAGE_SIZE = 12
 
-const categoryLabel: Record<string, { label: string; icon: typeof AlertTriangle; color: string }> = {
-  emergencia: { label: 'Emergência', icon: AlertTriangle, color: 'text-red-600' },
-  tecnico:    { label: 'Técnico',    icon: BookOpen,      color: 'text-primary'  },
+const categoryMeta: Record<string, { icon: typeof AlertTriangle; color: string }> = {
+  emergencia: { icon: AlertTriangle, color: 'text-red-600' },
+  tecnico:    { icon: BookOpen,      color: 'text-primary'  },
+}
+
+function FilterPill({
+  active, onClick, children,
+}: { active: boolean; onClick: () => void; children: React.ReactNode }) {
+  return (
+    <button
+      onClick={onClick}
+      className={`shrink-0 px-3 py-1 rounded-full text-xs font-medium border transition-colors ${
+        active
+          ? 'bg-primary text-primary-foreground border-primary'
+          : 'bg-white text-muted-foreground border-border hover:border-primary/40'
+      }`}
+    >
+      {children}
+    </button>
+  )
 }
 
 export default function Home() {
   const navigate = useNavigate()
   const [query, setQuery] = useState('')
+  const [activeCategory, setActiveCategory] = useState<string | null>(null)
   const [activeTag, setActiveTag] = useState<string | null>(null)
   const [page, setPage] = useState(1)
 
   const filtered = useMemo(() => {
     let list = articles
+    if (activeCategory) list = list.filter(a => a.category === activeCategory)
     if (activeTag) list = list.filter(a => a.tags.includes(activeTag))
     if (query.trim().length >= 2) {
       const q = query.trim().toLowerCase()
@@ -32,93 +51,118 @@ export default function Home() {
       )
     }
     return list
-  }, [activeTag, query])
+  }, [activeCategory, activeTag, query])
 
   const totalPages = Math.ceil(filtered.length / PAGE_SIZE)
   const paginated = filtered.slice((page - 1) * PAGE_SIZE, page * PAGE_SIZE)
+
+  function resetPage() { setPage(1) }
+
+  function selectCategory(cat: string) {
+    setActiveCategory(prev => prev === cat ? null : cat)
+    setActiveTag(null)
+    resetPage()
+  }
+
+  function selectTag(tag: string) {
+    setActiveTag(prev => prev === tag ? null : tag)
+    resetPage()
+  }
+
+  function clearAll() {
+    setActiveCategory(null)
+    setActiveTag(null)
+    resetPage()
+  }
 
   function handleSearch(e: React.FormEvent) {
     e.preventDefault()
     if (query.trim().length >= 2) navigate(`/busca?q=${encodeURIComponent(query.trim())}`)
   }
 
-  function selectTag(tag: string) {
-    setActiveTag(prev => prev === tag ? null : tag)
-    setPage(1)
-  }
+  const hasFilter = activeCategory !== null || activeTag !== null
 
   return (
     <div className="min-h-screen bg-background">
       <header className="bg-primary text-primary-foreground pt-12 pb-6">
         <div className="max-w-7xl mx-auto px-4 sm:px-5">
-        <div className="flex items-center gap-4 mb-5">
-          <img src={logo} alt="Insígnia FAB" className="w-14 h-14 object-contain drop-shadow-md" />
-          <div>
-            <p className="text-xs font-semibold uppercase tracking-widest opacity-60">2º/2º GT · FAB</p>
-            <h1 className="text-xl font-bold leading-tight">Manual de Cabine</h1>
-            <p className="text-xs opacity-60 mt-0.5">Consulta de procedimentos</p>
+          <div className="flex items-center gap-4 mb-5">
+            <img src={logo} alt="Insígnia FAB" className="w-14 h-14 object-contain drop-shadow-md" />
+            <div>
+              <p className="text-xs font-semibold uppercase tracking-widest opacity-60">2º/2º GT · FAB</p>
+              <h1 className="text-xl font-bold leading-tight">Manual de Cabine</h1>
+              <p className="text-xs opacity-60 mt-0.5">Consulta de procedimentos</p>
+            </div>
           </div>
-        </div>
 
-        <form onSubmit={handleSearch} className="relative">
-          <Search className="absolute left-3 top-1/2 -translate-y-1/2 w-4 h-4 text-primary/50" />
-          <Input
-            placeholder="Buscar procedimento..."
-            value={query}
-            onChange={e => { setQuery(e.target.value); setPage(1) }}
-            className="pl-9 bg-white/95 text-foreground placeholder:text-muted-foreground border-0 shadow-sm"
-          />
-        </form>
+          <form onSubmit={handleSearch} className="relative">
+            <Search className="absolute left-3 top-1/2 -translate-y-1/2 w-4 h-4 text-primary/50" />
+            <Input
+              placeholder="Buscar procedimento..."
+              value={query}
+              onChange={e => { setQuery(e.target.value); resetPage() }}
+              className="pl-9 bg-white/95 text-foreground placeholder:text-muted-foreground border-0 shadow-sm"
+            />
+          </form>
         </div>
       </header>
 
-      {/* Barra de tags */}
-      <div className="bg-primary/5 border-b border-border px-4 py-3">
-        <div className="flex gap-2 overflow-x-auto scrollbar-none max-w-7xl mx-auto px-0 sm:px-1">
-          <button
-            onClick={() => { setActiveTag(null); setPage(1) }}
-            className={`shrink-0 px-3 py-1 rounded-full text-xs font-medium border transition-colors ${
-              activeTag === null
-                ? 'bg-primary text-primary-foreground border-primary'
-                : 'bg-white text-muted-foreground border-border hover:border-primary/40'
-            }`}
-          >
-            Todos
-          </button>
-          {allTags.map(tag => (
-            <button
-              key={tag}
-              onClick={() => selectTag(tag)}
-              className={`shrink-0 px-3 py-1 rounded-full text-xs font-medium border transition-colors ${
-                activeTag === tag
-                  ? 'bg-primary text-primary-foreground border-primary'
-                  : 'bg-white text-muted-foreground border-border hover:border-primary/40'
-              }`}
-            >
-              {tag}
-            </button>
-          ))}
+      {/* Filtros */}
+      <div className="border-b border-border bg-primary/5">
+        <div className="max-w-7xl mx-auto px-4">
+
+          {/* Linha 1: categorias */}
+          <div className="flex items-center gap-2 pt-3 pb-2">
+            <span className="text-xs text-muted-foreground font-medium shrink-0">Categoria</span>
+            <div className="w-px h-4 bg-border shrink-0" />
+            <div className="flex gap-2">
+              <FilterPill active={activeCategory === null && !hasFilter} onClick={clearAll}>
+                Todas
+              </FilterPill>
+              {allCategories.map(cat => (
+                <FilterPill key={cat} active={activeCategory === cat} onClick={() => selectCategory(cat)}>
+                  {categoryNames[cat] ?? cat}
+                </FilterPill>
+              ))}
+            </div>
+          </div>
+
+          {/* Linha 2: tags (roláveis) */}
+          <div className="flex items-center gap-2 pb-3">
+            <span className="text-xs text-muted-foreground font-medium shrink-0">Tags</span>
+            <div className="w-px h-4 bg-border shrink-0" />
+            <div className="flex gap-2 overflow-x-auto scrollbar-none">
+              {allTags.map(tag => (
+                <FilterPill key={tag} active={activeTag === tag} onClick={() => selectTag(tag)}>
+                  {tag}
+                </FilterPill>
+              ))}
+            </div>
+          </div>
+
         </div>
       </div>
 
       <main className="px-4 py-5 max-w-7xl mx-auto">
         <p className="text-xs text-muted-foreground mb-4">
           {filtered.length} procedimento{filtered.length !== 1 ? 's' : ''}
-          {activeTag ? ` em "${activeTag}"` : ''}
+          {activeCategory ? ` em ${categoryNames[activeCategory] ?? activeCategory}` : ''}
+          {activeTag ? ` · tag "${activeTag}"` : ''}
         </p>
 
-        {/* Grid de artigos */}
         <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-3">
           {paginated.map(article => {
-            const cat = categoryLabel[article.category]
-            const Icon = cat.icon
+            const meta = categoryMeta[article.category] ?? categoryMeta.tecnico
+            const Icon = meta.icon
             return (
               <Link key={article.slug} to={`/artigo/${article.slug}`}>
                 <Card className="h-full border border-border hover:shadow-md hover:border-primary/30 transition-all">
                   <CardContent className="p-4 flex flex-col gap-2 h-full">
                     <div className="flex items-center gap-1.5">
-                      <Icon className={`w-3.5 h-3.5 shrink-0 ${cat.color}`} />
-                      <span className={`text-xs font-medium ${cat.color}`}>{cat.label}</span>
+                      <Icon className={`w-3.5 h-3.5 shrink-0 ${meta.color}`} />
+                      <span className={`text-xs font-medium ${meta.color}`}>
+                        {categoryNames[article.category] ?? article.category}
+                      </span>
                     </div>
                     <p className="text-sm font-semibold leading-snug flex-1">{article.title}</p>
                     <div className="flex flex-wrap gap-1 mt-auto pt-1">
@@ -138,34 +182,17 @@ export default function Home() {
           })}
         </div>
 
-        {/* Paginação */}
         {totalPages > 1 && (
           <div className="flex items-center justify-center gap-2 mt-6">
-            <Button
-              variant="outline"
-              size="sm"
-              onClick={() => setPage(p => Math.max(1, p - 1))}
-              disabled={page === 1}
-            >
+            <Button variant="outline" size="sm" onClick={() => setPage(p => Math.max(1, p - 1))} disabled={page === 1}>
               <ChevronLeft className="w-4 h-4" />
             </Button>
             {Array.from({ length: totalPages }, (_, i) => i + 1).map(n => (
-              <Button
-                key={n}
-                variant={n === page ? 'default' : 'outline'}
-                size="sm"
-                onClick={() => setPage(n)}
-                className="w-8"
-              >
+              <Button key={n} variant={n === page ? 'default' : 'outline'} size="sm" onClick={() => setPage(n)} className="w-8">
                 {n}
               </Button>
             ))}
-            <Button
-              variant="outline"
-              size="sm"
-              onClick={() => setPage(p => Math.min(totalPages, p + 1))}
-              disabled={page === totalPages}
-            >
+            <Button variant="outline" size="sm" onClick={() => setPage(p => Math.min(totalPages, p + 1))} disabled={page === totalPages}>
               <ChevronRight className="w-4 h-4" />
             </Button>
           </div>
