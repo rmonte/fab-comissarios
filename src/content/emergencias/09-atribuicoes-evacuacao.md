@@ -1,56 +1,98 @@
 ---
-title: Responsabilidades e Atribuições dos Tripulantes Durante a Evacuação
+title: Responsabilidades e Atribuições na Evacuação
 slug: atribuicoes-evacuacao
 category: emergencia
 day: 9
-tags: [evacuacao, atribuicoes, tripulacao, hierarquia, cheque-abandono]
+tags: [evacuacao, responsabilidades, PF, PM, load-master, comissarios]
 aircraft: [todos]
+pdf: pdfs/Calendário da Emergencia do Dia.pdf
 ---
 
-## Hierarquia na Evacuação
+## Voz de Comando na Evacuacao
 
-A evacuação é comandada pelo **Comandante da aeronave**. Na ausência de comando, o Chefe de Cabine assume a coordenação da cabine.
+> [!danger] Comissarios — ao iniciar a evacuacao
+> **"SOLTEM OS CINTOS! DEIXEM TUDO! SAIAM POR AQUI!"**
 
-## Atribuições por Posição
+---
 
-### Chefe de Cabine
-- Recebe o briefing do Comandante (TEST)
-- Coordena os demais comissários
-- Decide sobre início de evacuação por evidência (na ausência do Comandante)
-- Realiza o cheque de abandono final
+## Tabela de Responsabilidades
 
-### Comissário de Porta
-- Avalia a área externa antes de abrir a porta
-- Comanda a evacuação pela sua saída
-- Posiciona-se ao lado da porta, nunca na frente
-- Usa voz de comando adequada ao tipo de pouso
+| Tripulante | Equipamento | Porta | Observacoes |
+|---|---|---|---|
+| **PF** (Pilot Flying) | — | **AFT** (traseira) | Comanda a evacuacao · **Ultimo a sair** · Verifica se todos evacuaram |
+| **PM** (Pilot Monitoring) | Lanterna | **FWD** (dianteira) | Auxilia de fora · Afasta minimo **300 m** |
+| **Mecanico** | Machadinha + ELT dianteiro | **FWD** | Auxilia de fora · Afasta minimo **300 m** |
+| **3o Piloto (3P)** | 1 cilindro de O2 + Lanterna | **FWD** | Abandona **apos os PAX** |
+| **4o Piloto (4P)** | — | **FWD** | Abandona **antes do 3P** |
+| **1o Load Master** | Kit de Sobrevivencia (Selva) | **FWD** | Auxilia de fora · Afasta minimo **300 m** |
+| **2o Load Master** | Celular da aeronave | **FWD** | Auxilia de fora · Afasta minimo **300 m** |
+| **Comissarios** | — | Conforme CMD | Por hierarquia ou por evidencia |
 
-### Todos os Comissários
-- Manter posição até ordem de evacuação
-- Não iniciar evacuação sem ordem — exceto por **evidência clara**
-- Auxiliar PAX com mobilidade reduzida
+---
 
-## Evacuação por Hierarquia vs. por Evidência
+## Detalhes por Funcao
 
-| Tipo | Quando usar |
-|------|------------|
-| **Por hierarquia** | Comandante ordena: *"Atenção Trip e PAX, iniciar evacuação pelas portas XXX"* |
-| **Por evidência** | Fogo visível, fumaça densa, ruptura de fuselagem, água entrando — agir sem esperar ordem |
+### Pilot Flying (PF)
 
-## Cheque de Abandono
+- **Comanda** a evacuacao
+- Abandona pela **porta AFT** (traseira)
+- **Ultimo a sair** da aeronave
+- Verifica se **todos evacuaram**
 
-Antes de deixar a aeronave, cada comissário verifica:
-1. Sanitários (verificar se há PAX)
-2. Corredores (PAX caídos, imóveis)
-3. Compartimentos superiores (nada ficou para trás que impeça saída)
-4. Confirmar ao Chefe de Cabine
+### Pilot Monitoring (PM)
 
-## Vozes de Comando por Situação
+- Leva **Lanterna**
+- Abandona pela **porta FWD** (dianteira)
+- Auxilia, **de fora da aeronave**, a saida dos PAX
+- Afasta no minimo **300 metros**
 
-| Situação | Voz de Comando |
-|----------|----------------|
-| Impacto iminente | *"Impacto, impacto!"* |
-| Posição de impacto | *"Abaixem-se, abaixem-se!"* |
-| Evacuação em terra | *"Formem duas filas! Pulem, pulem!"* |
-| Evacuação na água | *"Formem duas filas! Inflem os coletes e saiam!"* |
-| Após parada | *"Soltem os cintos, deixem tudo, saiam por aqui!"* |
+### Mecanico
+
+- Leva **Machadinha** e **ELT dianteiro**
+- Abandona pela **porta FWD** (dianteira)
+- Auxilia, **de fora da aeronave**, a saida dos PAX
+- Afasta no minimo **300 metros**
+
+### 3o Piloto (3P)
+
+- Leva **1 cilindro de O2** e **Lanterna**
+- Abandona pela **porta FWD**, **apos os PAX**
+
+### 4o Piloto (4P)
+
+- Abandona pela **porta FWD**, **antes do 3P**
+- Nao carrega equipamento especifico
+
+### 1o Load Master
+
+- Leva **Kit de Sobrevivencia (Selva)**
+- Abandona pela **porta FWD**
+- Auxilia de fora · Afasta no minimo **300 metros**
+
+### 2o Load Master
+
+- Leva **Celular da aeronave**
+- Abandona pela **porta FWD**
+- Auxilia de fora · Afasta no minimo **300 metros**
+
+### Comissarios
+
+- Efetuam a evacuacao de acordo com as **ordens do Comandante**
+- Quando for por **evidencia**: analisar a situacao e evacuar da **melhor forma**
+
+---
+
+## Diagrama de Saida
+
+```
+[PORTA FWD] ──────────────── [PORTA AFT]
+   |                              |
+   PM, Mecanico                   PF (ultimo)
+   3P (apos PAX)
+   4P (antes do 3P)
+   1o Load Master
+   2o Load Master
+```
+
+> [!info]
+> PM, Mecanico, 1o e 2o Load Master devem se afastar no minimo **300 metros** da aeronave.

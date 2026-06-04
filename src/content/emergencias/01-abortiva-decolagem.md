@@ -1,41 +1,80 @@
 ---
-title: Abortiva de Decolagem
+title: Abortiva de Decolagem (RTO)
 slug: abortiva-decolagem
 category: emergencia
 day: 1
-tags: [rto, decolagem, evacuacao, pista]
+tags: [rto, decolagem, evacuacao, pista, 30-second-review]
 aircraft: [todos]
+pdf: pdfs/Calendário da Emergencia do Dia.pdf
 ---
 
-## Possíveis Causas de uma RTO (Rejected Take Off)
+**RTO** = Rejected Take Off
 
-- Panes na aeronave
-- Informações da Torre de Controle
-- Obstruções na pista
+---
 
-## Consciência Situacional
+## Possiveis Causas
 
-Manter **consciência situacional elevada na decolagem** (30 second review).
+- **A** — Panes na aeronave (falha técnica durante a corrida de decolagem)
+- **B** — Informações da torre de controle (instrução de abortar do ATC)
+- **C** — Obstruções na pista (aeronave, veiculo ou objeto identificado)
 
-Após a parada total da aeronave, espere 5s, faça contato com a Cab. de CMDO e mantenha a comunicação (Chefe de Cabine).
+---
 
-O CMD deverá anunciar pelo PA: **"ATENÇÃO, AGUARDEM INSTRUÇÕES."**
+## Consciencia Situacional na Decolagem
 
-## Após Avaliação da Situação
+> [!info] 30 Second Review
+> Durante os **30 segundos criticos** de decolagem, toda a tripulacao deve manter atencao maxima — sem conversas, leituras ou distracoes. E a janela de maior risco da operacao.
 
-### 1. Evacuação NÃO Requerida
-Onde o controle é evidente.
+---
 
-- *"Tripulação, Situação Controlada"* (Callout dos Pilotos)
-- Antes de iniciar o taxi: os comissários avaliam as condições da cabine de PAX e passam para a cabine do CMDO
-- Antes e durante o taxi: a Trip Técnica monitora a pressão dos pneus e a temperatura dos freios
+## Apos a Parada Total da Aeronave
 
-### 2. Evacuação Requerida
-Por hierarquia, o CMD comanda a evacuação.
+1. **Aguarde 5 segundos** apos a parada total antes de qualquer acao
+2. **Faca contato com a cabine de comando** (Chefe de Cabine) e mantenha comunicacao ativa
+3. Comandante anuncia pelo PA:
 
-- *"Atenção Trip e PAX, iniciar evacuação pelas portas XXX"* (Callout dos Pilotos)
-- Posteriormente aciona o EVAC COMMAND
+> [!warning] Callout do Piloto
+> *"Atencao, aguardem instrucoes."*
 
-## Observação
+---
 
-Havendo uma evidência (fogo ou fumaça incontrolável, rompimento de fuselagem e pouso final em água), busque comunicação para garantir a hierarquia nessa situação.
+## Apos Avaliacao — Duas Possibilidades
+
+### Opcao 1 — Evacuacao NAO Requerida
+
+> [!success] Callout dos Pilotos
+> *"Tripulacao, situacao controlada"*
+
+- **Antes de iniciar o taxi:** comissarios avaliam as condicoes da cabine de PAX e passam informacao para a cabine de comando
+- **Antes e durante o taxi:** tripulacao tecnica monitora a **pressao dos pneus** e a **temperatura dos freios**
+
+### Opcao 2 — Evacuacao REQUERIDA
+
+> [!danger] Callout dos Pilotos
+> *"Atencao trip e pax, iniciar evacuacao pelas portas XXX"*
+
+- Por hierarquia, o **Comandante comanda a evacuacao**
+- Posteriormente o Comandante aciona o **EVAC COMMAND**
+
+---
+
+## Observacao — Evidencia de Emergencia
+
+> [!danger] Quando buscar comunicacao imediata
+> Havendo **evidencia clara**, busque comunicacao para garantir a hierarquia antes de agir:
+> - Fogo ou fumaca incontrolavel
+> - Rompimento de fuselagem
+> - Pouso final em agua
+
+---
+
+## Sequencia Resumida
+
+```
+30s review → Parada total → Espera 5s → Contato cabine de comando
+↓
+PA: "Atencao, aguardem instrucoes"
+↓
+Sem evacuacao: "Situacao controlada" → avaliar cabine → monitorar pneus/freios
+Com evacuacao: "Iniciar evacuacao pelas portas XXX" → EVAC COMMAND
+```

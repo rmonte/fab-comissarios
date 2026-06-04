@@ -3,52 +3,86 @@ title: Equipamentos de Emergência e Sobrevivência
 slug: equipamentos-emergencia
 category: emergencia
 day: 8
-tags: [equipamentos, emergencia, sobrevivencia, klm]
+tags: [KLM+E, sobrevivencia, ELT, ESAON, AFAA]
 aircraft: [todos]
+pdf: pdfs/Calendário da Emergencia do Dia.pdf
 ---
 
-## Kit de Emergência — KLM+E
+## Equipamentos no Abandono — KLM+E
 
 | Sigla | Item |
-|-------|------|
-| **K** | Kit médico de emergência |
-| **L** | Lanterna |
-| **M** | Megafone |
-| **E** | ELT (Emergency Locator Transmitter) |
+|---|---|
+| **K** | **K**its — Medico · Farmacia · PS · Sobrevivencia · Biohazard |
+| **L** | **L**anternas |
+| **M** | **M**egafone |
+| **+E** | **E**LT — Emergency Locator Transmitter |
 
-## Extintores
+---
 
-- Localização: conforme mapa de cabine de cada aeronave
-- Tipos: CO2 / Halon / Água pressurizada
-- Verificação: pressão, lacre, validade
+## Acoes Imediatas Apos Evacuacao
 
-## PBE — Protective Breathing Equipment
+### Em Terra
 
-- Uso: combate a fogo com fumaça
-- Autonomia: aprox. 15 minutos de oxigênio
-- Ativação: puxar anel → encaixar sobre a cabeça → verificar vedação
+1. Afastar-se da aeronave
+2. Acionar o ELT
+3. Triagem de vitimas e PS
 
-## DEA — Desfibrilador Externo Automático
+### No Mar
 
-- Localização: fixo na cabine (verificar por aeronave)
-- Uso: seguir instruções de voz do equipamento
-- Aplicação: indicado para PCR com ritmo chocável (FV/TV)
+1. Afastar-se da aeronave
+2. Acionar o ELT
+3. **Agrupar os sobreviventes** *(passo extra — exclusivo do mar)*
+4. Triagem de vitimas e PS
 
-## Colete Salva-Vidas
+> [!info] Diferenca Terra x Mar
+> No mar ha um passo extra: **agrupar os sobreviventes** antes da triagem.
 
-- Localização: sob cada assento de passageiro e tripulante
-- Não inflar dentro da aeronave
-- Inflar: puxar alça vermelha ao sair da aeronave
-- Inflação manual: soprar nos tubos bocal se necessário
+---
 
-## Escorregadeira / Balsa
+## Acoes Subsequentes — A · F · A · +A
 
-- Acionamento automático ao abrir porta em modo ARMED
-- Aguardar inflação completa antes de ordenar evacuação
-- Em amerrissagem: escorregadeira vira balsa
+| Sigla | Prioridade | Descricao |
+|---|---|---|
+| **A** | 1a | **Abrigo** — protecao contra sol, chuva e frio |
+| **F** | 2a | **Fogo** — aquecimento e sinalizacao de resgate |
+| **A** | 3a | **Agua** — hidratacao, prioridade vital |
+| **+A** | 4a | **Alimento** — energia para sobrevivencia |
 
-## Cilindro Portátil de O2
+---
 
-- Uso: atendimento a PAX em dificuldade respiratória
-- Verificar pressão antes de cada voo
-- Fluxo: ajustável conforme necessidade clínica
+## Apos 8 Dias — Deslocamento
+
+> [!warning]
+> Apos **8 dias de sobrevivencia** no local, iniciar o deslocamento em busca do resgate.
+> Levar **2/3 do alimento** disponivel para a jornada.
+
+---
+
+## Protocolo ESAON — A cada 3 horas
+
+> [!info] Ciclo de deslocamento — repetir a cada 3 horas
+> | Letra | Acao |
+> |---|---|
+> | **E** | **E**stacione — pare o deslocamento e descanse |
+> | **S** | **S**ente-se — recupere energia, nao fique em pe |
+> | **A** | **A**limente-se — consuma uma parte da racao |
+> | **O** | **O**riente-se — redefina a rota e o ponto de referencia |
+> | **N** | **N**avegue — continue o deslocamento rumo ao resgate |
+
+---
+
+## Resumo Visual
+
+```
+ABANDONO DA AERONAVE
+↓
+Levar: KLM+E (Kits · Lanternas · Megafone · ELT)
+↓
+TERRA: Afastar → ELT → Triagem + PS
+MAR:   Afastar → ELT → Agrupar → Triagem + PS
+↓
+SUBSEQUENTES: Abrigo → Fogo → Agua → Alimento (A·F·A·+A)
+↓
+Apos 8 dias: Deslocamento com 2/3 do alimento
+A cada 3h:  E → S → A → O → N (ESAON)
+```

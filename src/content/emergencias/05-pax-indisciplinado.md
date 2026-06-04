@@ -3,37 +3,64 @@ title: PAX Indisciplinado
 slug: pax-indisciplinado
 category: emergencia
 day: 5
-tags: [pax, indisciplina, seguranca, comportamento]
+tags: [PAX-indisciplinado, contencao, ALC, CLA, seguranca]
 aircraft: [todos]
+pdf: pdfs/Calendário da Emergencia do Dia.pdf
 ---
 
-## Definição
+## Ao Identificar — 4 Gatilhos de Acao
 
-Passageiro indisciplinado (unruly passenger) é aquele que não cumpre as regras de conduta a bordo, comprometendo a segurança do voo ou o bem-estar dos demais ocupantes.
+> [!danger]
+> Agir ao identificar qualquer uma das situacoes abaixo:
+> 1. Iminencia ou **invasao da cabine de comando**
+> 2. Tentativa de **abertura de saidas de emergencia**
+> 3. **Lesao corporal grave** ou iminencia de agressao fisica
+> 4. Presenca, declaracao ou contestacao de **artefato de destruicao em massa**
 
-## Níveis de Indisciplina
+---
 
-- **Nível 1 — Verbal:** linguagem abusiva, comportamento desrespeitoso
-- **Nível 2 — Físico:** agressão física, comportamento ameaçador
-- **Nível 3 — Ameaça à segurança:** ameaça à aeronave, tentativa de acesso ao cockpit
-- **Nível 4 — Extremo:** ameaça com arma, explosivo
+## Tipos de Contencao
 
-## Procedimento Geral
+### Contencao Preparada — A · L · C
 
-1. Manter a calma e não escalar o conflito
-2. Comunicar ao Chefe de Cabine imediatamente
-3. Chefe de Cabine comunica ao Comandante
-4. Registrar o ocorrido (horário, assento, descrição do fato)
-5. Documentar com testemunhas quando possível
-6. O Comandante decide sobre desvio de rota ou chamado às autoridades
+> [!info] Mnemonico: A - L - C
+> 1. **A** visar o CMD
+> 2. **L** er a notificacao
+> 3. **C** onter o PAX
 
-## Contenção
+### Contencao Nao Preparada — C · L · A
 
-- Usar somente força necessária e proporcional
-- Utilizar kit de contenção disponível a bordo
-- Nunca deixar o PAX sozinho após contenção
-- Comunicar às autoridades no destino
+> [!warning] Mnemonico: C - L - A
+> 1. **C** onter o PAX (acao imediata)
+> 2. **L** er a notificacao
+> 3. **A** visar o CMD (somente apos contenção e leitura)
 
-## Observação
+---
 
-Em caso de ameaça ao cockpit, seguir protocolo específico de segurança da aeronave.
+## Pos-Contencao — Regras em Voo
+
+| Regra | Detalhe |
+|---|---|
+| Retirada da contenção | Apenas em emergencia preparada ou atendimento medico |
+| Toalete | PAX **nao fara uso** do toalete |
+| Alimentacao | **Nao alimentar** o PAX |
+| Agua | Ministrar agua em **pequenas quantidades** e com cautela |
+| Vigilancia | Um tripulante deverá pousar ao lado do PAX ou o mais proximo possivel |
+| No pouso | PAX deve estar apenas com a **algema flexivel** e com o **cinto de seguranca** |
+
+---
+
+## Apos o Pouso
+
+1. A **autoridade competente** sera responsavel por retirar o PAX da aeronave
+2. A ocorrencia devera ser lancada no **Relatorio Final da Ordem de Missao**
+
+---
+
+## Comparativo Rapido
+
+| | Preparada | Nao Preparada |
+|---|---|---|
+| Ordem | A → L → C | C → L → A |
+| 1a acao | Avisar CMD | Conter PAX |
+| Ultima acao | Conter PAX | Avisar CMD |

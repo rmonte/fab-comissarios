@@ -3,41 +3,102 @@ title: Emergência Médica a Bordo
 slug: emergencia-medica
 category: emergencia
 day: 7
-tags: [medica, primeiros-socorros, dea, cpr, desfibrilador]
+tags: [emergencia-medica, RCP, SAMPLE, DFaFI, RICE, CSM, Heimlich]
 aircraft: [todos]
+pdf: pdfs/Calendário da Emergencia do Dia.pdf
 ---
 
-## Procedimento Geral
+## 1o — Avaliar o Cenario (3 itens)
 
-1. Avaliar a cena (segurança para o socorrista)
-2. Checar responsividade do PAX
-3. Comunicar ao Chefe de Cabine → Comunicar ao Cockpit
-4. Solicitar médico ou profissional de saúde a bordo (PA)
-5. Pegar o kit de primeiros socorros / kit médico / DEA
+| Item | Descricao |
+|---|---|
+| **Riscos** | Riscos iminentes ao redor |
+| **Vitimas** | Quantas e quem sao |
+| **Natureza** | Clinica ou trauma |
 
-## Avaliação Primária (ABCDE)
+---
 
-- **A** — Airway (via aérea): desobstruir se necessário
-- **B** — Breathing (respiração): verificar e suportar
-- **C** — Circulation (circulação): pulso e sinais de choque
-- **D** — Disability (neurológico): nível de consciência (AVPU)
-- **E** — Exposure (exposição): identificar lesões visíveis
+## 2o — Acionar o Resgate (3 acoes simultaneas)
 
-## PCR — Parada Cardiorrespiratória
+1. **Avisar o Comandante**
+2. **Chamar medico voluntario** a bordo
+3. **Pegar equipamentos medicos**
 
-1. Confirmar ausência de pulso e respiração
-2. Iniciar RCP: 30 compressões + 2 ventilações
-3. Solicitar e preparar o DEA assim que possível
-4. Seguir instruções do DEA (ele guia o operador por voz)
-5. Não interromper RCP até chegada de socorro ou instrução médica
+> [!info]
+> O comissario deve **auxiliar os medicos**.
+> Na falta de medico voluntario, prosseguira com os **primeiros socorros**.
 
-## Comunicação com o Cockpit
+---
 
-- Informar: tipo de emergência, condição do PAX, necessidade de desvio
-- O Comandante decide sobre desvio de rota para assistência médica em terra
+## Avaliacao Primaria — Vitima Inconsciente
 
-## Documentação
+**Pergunta-chave: RESPIRA?**
 
-- Registrar horário do início dos sintomas
-- Registrar medicamentos administrados, doses e horários
-- Preencher relatório médico de bordo
+| Resposta | Acao |
+|---|---|
+| **SIM** | Lateralizar a vitima (posicao de recuperacao lateral) |
+| **NAO** | RCP (C-A-B) + DEA assim que disponivel |
+
+> [!info] Ordem da RCP — C-A-B
+> **C** — Circulacao (compressoes toracicas)
+> **A** — Abertura das vias aereas
+> **B** — Boca-a-boca (respiracao)
+
+---
+
+## Avaliacao Secundaria — Vitima Consciente
+
+### Caso Clinico — SAMPLE
+
+| Letra | Significado |
+|---|---|
+| **S** | Sinais e Sintomas — o que o paciente sente agora |
+| **A** | Alergias — medicamentos ou substancias |
+| **M** | Medicamentos — em uso atualmente |
+| **P** | Passado medico — historico de doencas |
+| **L** | Last meal — ultima refeicao |
+| **E** | Eventos — o que levou ao problema |
+
+### Caso de Trauma
+
+| Sigla | Significado | Descricao |
+|---|---|---|
+| **DFaFI** | Deformidades · Feridas · Fraturas · Inchaço | Avaliacao visual do corpo |
+| **Imobilizacao** | — | Estabilizar a regiao afetada |
+| **CSM** | Circulacao · Sensibilidade · Movimentacao | Funcao distal ao trauma |
+| **RICE** | Rest · Ice · Compression · Elevation | Para entorses e contusoes |
+
+---
+
+## Engasgo — Manobra de Heimlich
+
+> [!danger]
+> Em caso de engasgo: realizar a **Manobra de Heimlich** imediatamente.
+> Posicionar-se **atras da vitima**, aplicar compressoes abdominais **para cima e para dentro** ate desobstruir a via aerea.
+
+---
+
+## Observacao sobre Kits
+
+> [!warning]
+> A utilizacao dos kits **Medico**, **PS** e **Biohazard** devera ser **reportada**.
+
+---
+
+## Fluxograma
+
+```
+Avaliar cenario (riscos · vitimas · natureza)
+↓
+[Simultaneo] Avisar CMD · Medico voluntario · Equipamentos
+↓
+INCONSCIENTE:
+→ Respira? SIM → Lateralizar
+→ Respira? NAO → RCP (C-A-B) → DEA
+↓
+CONSCIENTE:
+→ Clinico: SAMPLE
+→ Trauma: DFaFI → Imobilizacao → CSM → RICE
+↓
+Engasgo? → Heimlich
+```

@@ -3,37 +3,163 @@ title: Aterrissagem de Emergência
 slug: aterrissagem
 category: emergencia
 day: 4
-tags: [aterrissagem, evacuacao, impacto, cockpit]
+tags: [aterrissagem, emergencia, evacuacao, KLM+E, senha-cockpit]
 aircraft: [todos]
+pdf: pdfs/Calendário da Emergencia do Dia.pdf
 ---
 
-## Pouso de Emergência PREPARADO
+## Pouso Preparado — 16 Etapas
 
-1. O Comandante realiza o **TEST Briefing** com o Chefe de Cabine (Tipo de emergência / Evacuação preparada ou não / Sinais convencionais / Tempo disponível)
-2. Checar com os pilotos no formato **TEST**
-3. Passar as informações para os demais comissários
-4. Desligar o sist. entretenimento e o PED POWER
-5. Comunicado do Comandante aos PAX (poderá ser delegado ao Chefe de Cabine)
-6. Realizar o **Speech** de aterrissagem (comissário em melhores condições), a **Demonstração** (posição de impacto / saídas) e a **Preparação de Cabine:**
-   - Checar a cabine (objetos pontiagudos, salto alto, óculos, fones, gravatas, guardar objetos, travar compartimentos e lav...)
-   - Instruir os PAX próximos às saídas sobre restrições e operação da porta
-   - Separar água e alimento e comunicar aos demais comissários
-7. Informar que a cabine está pronta aos pilotos
-8. Tomar seu assento e afivelar o cinto
-9. O comissário deverá usar a voz de comando **"IMPACTO, IMPACTO"** logo após o piloto informar *"Tripulação, preparar para o impacto"* (1 minuto, aprox., antes do impacto ou 500ft de altura)
-10. Após a parada total da ANV, ao ouvir **"E.V/ E.V"** e/ou **Alarme de Evacuação**, os comissários irão gritar **"Soltem os cintos, deixem tudo, saiam por aqui!"**; caso não haja o CMDO, entrar em CTT com o Cockpit via PA; não tendo resposta, acessar ao cockpit com a senha (9703#); esperar os 30s; a porta destravará; entrar no cockpit
-11. Em caso de piloto incapacitado: **cortar os motores** / acionar o extintor **(AGENT 1/AGENT1)** / EVAC COMMAND / ELT
-12. Abrir a porta em emergência (antes, avaliar a área externa quanto a fogo, combustível, destroços)
-13. Esperar a escorregadeira inflar completamente; proceder com a evacuação; usar a voz de comando **"Formem duas filas! Pulem, pulem!"** (usar lanternas como auxílio na evacuação)
-14. Realizar o cheque de abandono
-15. Levar os equip. de emergência necessários (KLM+E)
-16. Afastar-se da ANV
+### 1. TEST Briefing — Comandante → Chefe de Cabine
 
-## Pouso de Emergência NÃO PREPARADO
+- Tipo de emergencia
+- Evacuacao preparada ou nao
+- Sinais convencionais
+- Tempo disponivel
 
-1. Antes de cada pouso e decolagem:
-   - Consciência situacional elevada; revisão dos 30s
-   - Ao ouvir da cabine de CMDO *"Impacto, Impacto"*, usar a voz de comando *"Abaixem-se, abaixem-se!"*
-   - Após a parada total da ANV, proceder com a evacuação por hierarquia ou por evidência
+### 2. Checar com os pilotos no formato TEST
 
-> **OBS.:** Ao identificar uma evidência na evacuação (fogo ou fumaça, ruptura de fuselagem, água), proceder com a evacuação.
+### 3. Repassar as informacoes para os demais comissarios
+
+### 4. Desligar o sistema de entretenimento e o PED Power
+
+### 5. Comunicado do Comandante aos PAX
+
+Pode ser delegado ao Chefe de Cabine.
+
+### 6. Speech de Aterrissagem + Demonstracao + Preparacao de Cabine
+
+Realizado pelo comissario em **melhores condicoes**. A demonstracao inclui:
+- Posicao de impacto
+- Saidas de emergencia
+
+**a)** Checar a cabine: objetos pontiagudos, salto alto, oculos, fones, gravatas · guardar objetos · travar compartimentos e lavabos
+**b)** Instruir PAX proximos as saidas sobre restricoes e operacao da porta
+**c)** Separar agua e alimento e comunicar aos demais comissarios
+
+### 7. Informar que a cabine esta pronta aos pilotos
+
+### 8. Tomar o assento e afivelar o cinto
+
+### 9. Voz de comando pre-impacto
+
+Ao ouvir do piloto *"Tripulacao, preparar para o impacto"* (~1 min ou 500 ft antes):
+
+> [!danger] Voz de Comando
+> **"IMPACTO, IMPACTO!"**
+
+### 10. Apos a parada total — aguardar comando de evacuacao
+
+Ao ouvir **"E.V / E.V"** e/ou alarme de evacuacao:
+
+> [!danger] Voz de Comando
+> **"SOLTEM OS CINTOS, DEIXEM TUDO, SAIAM POR AQUI!"**
+
+**Se nao houver comando de evacuacao:**
+
+1. Esperar **5 segundos**
+2. Entrar em contato com o cockpit via **PA**
+3. Sem resposta: acessar o cockpit com a senha **9703#**
+4. Aguardar **30 segundos** — a porta destravara
+5. Entrar no cockpit
+
+### 11. Se piloto incapacitado — 4 acoes em sequencia
+
+> [!danger]
+> 1. **MOTORES** — Cortar os motores
+> 2. **EXTINTOR** — Agent 1 / Agent 1
+> 3. **EVAC CMD** — Acionar EVAC Command
+> 4. **ELT** — Acionar ELT
+
+### 12. Abrir a porta em emergencia
+
+> [!warning]
+> Antes de abrir: avaliar na area externa:
+> - Fogo
+> - Combustivel
+> - Destrocos
+
+### 13. Evacuacao pela escorregadeira
+
+Aguardar a escorregadeira inflar completamente.
+
+> [!danger] Voz de Comando
+> **"FORMEM DUAS FILAS! PULEM, PULEM!"**
+
+Usar lanternas como auxilio na evacuacao.
+
+### 14. Realizar o cheque de abandono
+
+### 15. Levar os equipamentos de emergencia — KLM+E
+
+| Sigla | Item |
+|---|---|
+| **K** | Kits (Medico · Farmacia · PS · Sobrevivencia · Biohazard) |
+| **L** | Lanternas |
+| **M** | Megafone |
+| **+E** | ELT Portatil |
+
+### 16. Afastar-se da aeronave
+
+---
+
+## Observacao — Evacuacao por Evidencia
+
+> [!danger]
+> Ao identificar evidencia na evacuacao — **proceder imediatamente**:
+> - Fogo ou fumaca
+> - Ruptura de fuselagem
+> - Agua
+
+---
+
+## Pouso Nao Preparado
+
+> [!warning]
+> Quando nao ha tempo para preparacao — acao imediata.
+
+1. **Antes de cada pouso e decolagem:**
+   - Consciencia situacional elevada
+   - Revisao dos 30 segundos
+
+2. **Ao ouvir da cabine de comando "IMPACTO, IMPACTO":**
+
+> [!danger] Voz de Comando
+> **"ABAIXEM-SE, ABAIXEM-SE!"**
+
+3. **Apos a parada total da aeronave:** proceder com a evacuacao **por hierarquia** ou **por evidencia**
+
+---
+
+## Diferenca: Aterrissagem vs Amerrissagem
+
+| Item | Aterrissagem | Amerrissagem |
+|---|---|---|
+| Colete | Nao veste colete | **Vestir colete** (etapa 8) |
+| Voz pos-parada | "SOLTEM OS CINTOS, DEIXEM TUDO..." | "VISTAM OS COLETES, SOLTEM OS CINTOS..." |
+| Escorregadeira | **"PULEM, PULEM!"** | Embarcar **engatinhando** |
+| Verificar porta | Fogo, combustivel, destrocos | Nivel da **agua** |
+| Evacuacao por | Hierarquia ou evidencia | **Evidencia** (agua) |
+
+---
+
+## Senha de Acesso ao Cockpit
+
+> [!info]
+> **9703#** — Senha para acesso ao cockpit em caso de nao resposta dos pilotos.
+> Aguardar 30 segundos apos a digitacao para a porta destravar.
+
+---
+
+## Sequencia Resumida
+
+```
+TEST Briefing → TEST com pilotos → Repassar demais comissarios
+→ Desligar entretenimento/PED → Comunicado CMD aos PAX
+→ Speech + demonstracao + preparacao cabine
+→ Cabine pronta → Assento + cinto
+→ "IMPACTO, IMPACTO!" → Parada → EV/EV ou acesso ao cockpit
+→ Avaliar area externa → Abrir porta → Escorregadeira
+→ "FORMEM DUAS FILAS! PULEM, PULEM!"
+→ Cheque abandono → KLM+E → Afastar
+```
