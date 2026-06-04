@@ -28,8 +28,8 @@ const categoryMeta: Record<string, {
   pill: string
   headerPill: string
 }> = {
-  emergencia: { icon: AlertTriangle, color: 'text-red-600 dark:text-red-400', accent: 'border-l-red-400',    pill: 'bg-red-50 text-red-600 dark:bg-red-500/15 dark:text-red-400',    headerPill: 'bg-red-500/20 text-red-100'   },
-  tecnico:    { icon: BookOpen,      color: 'text-primary',                  accent: 'border-l-primary/40', pill: 'bg-primary/8 text-primary',                                        headerPill: 'bg-white/15 text-white/90' },
+  emergencia: { icon: AlertTriangle, color: 'text-red-600 dark:text-red-400', accent: 'border-l-red-400',    pill: 'bg-red-50 text-red-600 dark:bg-red-500/15 dark:text-red-400',    headerPill: 'bg-red-100 text-red-700 dark:bg-red-500/15 dark:text-red-400'   },
+  tecnico:    { icon: BookOpen,      color: 'text-primary',                  accent: 'border-l-primary/40', pill: 'bg-primary/8 text-primary',                                        headerPill: 'bg-primary/10 text-primary' },
 }
 
 interface Section {
