@@ -1,5 +1,5 @@
 import { Link } from 'react-router-dom'
-import { Sun, Moon } from 'lucide-react'
+import { Sun, Moon, HelpCircle } from 'lucide-react'
 import logo from '@/images/logo.webp'
 import { useTheme } from '@/lib/theme'
 
@@ -27,8 +27,15 @@ export default function AppHeader({ children, action }: AppHeaderProps) {
               <p className="text-xs opacity-60">Consulta de procedimentos</p>
             </div>
           </Link>
-          <div className="flex items-center gap-2 shrink-0">
+          <div className="flex items-center gap-1 shrink-0">
             {action}
+            <Link
+              to="/ajuda"
+              aria-label="Ajuda"
+              className="w-8 h-8 flex items-center justify-center rounded-full text-white/60 hover:text-white hover:bg-white/10 transition-colors"
+            >
+              <HelpCircle className="w-4 h-4" />
+            </Link>
             <button
               onClick={toggle}
               aria-label="Alternar tema"
