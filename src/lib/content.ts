@@ -74,3 +74,7 @@ export function getBySlug(slug: string): Article | undefined {
   return articles.find(a => a.slug === slug)
 }
 
+export const allTags: string[] = [
+  ...new Set(articles.flatMap(a => a.tags)),
+].sort((a, b) => a.localeCompare(b, 'pt-BR'))
+

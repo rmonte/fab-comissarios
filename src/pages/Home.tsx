@@ -1,45 +1,55 @@
-import { useNavigate } from 'react-router-dom'
+import { useState, useMemo } from 'react'
+import { useNavigate, Link } from 'react-router-dom'
 import { Input } from '@/components/ui/input'
+import { Badge } from '@/components/ui/badge'
+import { Button } from '@/components/ui/button'
 import { Card, CardContent } from '@/components/ui/card'
-import { AlertTriangle, BookOpen, Search } from 'lucide-react'
-import { useState } from 'react'
+import { Search, AlertTriangle, BookOpen, ChevronLeft, ChevronRight } from 'lucide-react'
+import { articles, allTags } from '@/lib/content'
 import logo from '@/images/logo.webp'
 
-const categories = [
-  {
-    type: 'emergencia',
-    label: 'Emergências',
-    description: 'Procedimentos de emergência e evacuação',
-    icon: AlertTriangle,
-    color: 'text-red-700',
-    bg: 'bg-red-50',
-    border: 'border-red-200',
-    hover: 'hover:border-red-400',
-  },
-  {
-    type: 'tecnico',
-    label: 'Dados Técnicos',
-    description: 'Fichas técnicas por aeronave',
-    icon: BookOpen,
-    color: 'text-primary',
-    bg: 'bg-secondary',
-    border: 'border-border',
-    hover: 'hover:border-primary/40',
-  },
-]
+const PAGE_SIZE = 12
+
+const categoryLabel: Record<string, { label: string; icon: typeof AlertTriangle; color: string }> = {
+  emergencia: { label: 'Emergência', icon: AlertTriangle, color: 'text-red-600' },
+  tecnico:    { label: 'Técnico',    icon: BookOpen,      color: 'text-primary'  },
+}
 
 export default function Home() {
   const navigate = useNavigate()
   const [query, setQuery] = useState('')
+  const [activeTag, setActiveTag] = useState<string | null>(null)
+  const [page, setPage] = useState(1)
+
+  const filtered = useMemo(() => {
+    let list = articles
+    if (activeTag) list = list.filter(a => a.tags.includes(activeTag))
+    if (query.trim().length >= 2) {
+      const q = query.trim().toLowerCase()
+      list = list.filter(a =>
+        a.title.toLowerCase().includes(q) ||
+        a.tags.some(t => t.toLowerCase().includes(q))
+      )
+    }
+    return list
+  }, [activeTag, query])
+
+  const totalPages = Math.ceil(filtered.length / PAGE_SIZE)
+  const paginated = filtered.slice((page - 1) * PAGE_SIZE, page * PAGE_SIZE)
 
   function handleSearch(e: React.FormEvent) {
     e.preventDefault()
     if (query.trim().length >= 2) navigate(`/busca?q=${encodeURIComponent(query.trim())}`)
   }
 
+  function selectTag(tag: string) {
+    setActiveTag(prev => prev === tag ? null : tag)
+    setPage(1)
+  }
+
   return (
     <div className="min-h-screen bg-background">
-      <header className="bg-primary text-primary-foreground px-5 pt-12 pb-8">
+      <header className="bg-primary text-primary-foreground px-5 pt-12 pb-6">
         <div className="flex items-center gap-4 mb-5">
           <img src={logo} alt="Insígnia FAB" className="w-14 h-14 object-contain drop-shadow-md" />
           <div>
@@ -50,38 +60,114 @@ export default function Home() {
         </div>
 
         <form onSubmit={handleSearch} className="relative">
-          <Search className="absolute left-3 top-1/2 -translate-y-1/2 w-4 h-4 text-primary/60" />
+          <Search className="absolute left-3 top-1/2 -translate-y-1/2 w-4 h-4 text-primary/50" />
           <Input
             placeholder="Buscar procedimento..."
             value={query}
-            onChange={e => setQuery(e.target.value)}
+            onChange={e => { setQuery(e.target.value); setPage(1) }}
             className="pl-9 bg-white/95 text-foreground placeholder:text-muted-foreground border-0 shadow-sm"
           />
         </form>
       </header>
 
-      <main className="px-4 py-6 max-w-2xl mx-auto space-y-3">
-        <p className="text-xs font-semibold uppercase tracking-wide text-muted-foreground px-1">Categorias</p>
-
-        {categories.map(({ type, label, description, icon: Icon, color, bg, border, hover }) => (
+      {/* Barra de tags */}
+      <div className="bg-primary/5 border-b border-border px-4 py-3">
+        <div className="flex gap-2 overflow-x-auto scrollbar-none max-w-7xl mx-auto">
           <button
-            key={type}
-            onClick={() => navigate(`/categoria/${type}`)}
-            className="w-full text-left"
+            onClick={() => { setActiveTag(null); setPage(1) }}
+            className={`shrink-0 px-3 py-1 rounded-full text-xs font-medium border transition-colors ${
+              activeTag === null
+                ? 'bg-primary text-primary-foreground border-primary'
+                : 'bg-white text-muted-foreground border-border hover:border-primary/40'
+            }`}
           >
-            <Card className={`border ${border} ${hover} transition-all hover:shadow-md`}>
-              <CardContent className="flex items-center gap-4 py-4">
-                <div className={`${bg} ${color} p-3 rounded-xl shrink-0`}>
-                  <Icon className="w-5 h-5" />
-                </div>
-                <div>
-                  <p className="font-semibold text-sm">{label}</p>
-                  <p className="text-xs text-muted-foreground mt-0.5">{description}</p>
-                </div>
-              </CardContent>
-            </Card>
+            Todos
           </button>
-        ))}
+          {allTags.map(tag => (
+            <button
+              key={tag}
+              onClick={() => selectTag(tag)}
+              className={`shrink-0 px-3 py-1 rounded-full text-xs font-medium border transition-colors ${
+                activeTag === tag
+                  ? 'bg-primary text-primary-foreground border-primary'
+                  : 'bg-white text-muted-foreground border-border hover:border-primary/40'
+              }`}
+            >
+              {tag}
+            </button>
+          ))}
+        </div>
+      </div>
+
+      <main className="px-4 py-5 max-w-7xl mx-auto">
+        <p className="text-xs text-muted-foreground mb-4">
+          {filtered.length} procedimento{filtered.length !== 1 ? 's' : ''}
+          {activeTag ? ` em "${activeTag}"` : ''}
+        </p>
+
+        {/* Grid de artigos */}
+        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-3">
+          {paginated.map(article => {
+            const cat = categoryLabel[article.category]
+            const Icon = cat.icon
+            return (
+              <Link key={article.slug} to={`/artigo/${article.slug}`}>
+                <Card className="h-full border border-border hover:shadow-md hover:border-primary/30 transition-all">
+                  <CardContent className="p-4 flex flex-col gap-2 h-full">
+                    <div className="flex items-center gap-1.5">
+                      <Icon className={`w-3.5 h-3.5 shrink-0 ${cat.color}`} />
+                      <span className={`text-xs font-medium ${cat.color}`}>{cat.label}</span>
+                    </div>
+                    <p className="text-sm font-semibold leading-snug flex-1">{article.title}</p>
+                    <div className="flex flex-wrap gap-1 mt-auto pt-1">
+                      {article.tags.slice(0, 3).map(tag => (
+                        <Badge key={tag} variant="secondary" className="text-xs px-1.5 py-0">
+                          {tag}
+                        </Badge>
+                      ))}
+                      {article.tags.length > 3 && (
+                        <span className="text-xs text-muted-foreground">+{article.tags.length - 3}</span>
+                      )}
+                    </div>
+                  </CardContent>
+                </Card>
+              </Link>
+            )
+          })}
+        </div>
+
+        {/* Paginação */}
+        {totalPages > 1 && (
+          <div className="flex items-center justify-center gap-2 mt-6">
+            <Button
+              variant="outline"
+              size="sm"
+              onClick={() => setPage(p => Math.max(1, p - 1))}
+              disabled={page === 1}
+            >
+              <ChevronLeft className="w-4 h-4" />
+            </Button>
+            {Array.from({ length: totalPages }, (_, i) => i + 1).map(n => (
+              <Button
+                key={n}
+                variant={n === page ? 'default' : 'outline'}
+                size="sm"
+                onClick={() => setPage(n)}
+                className="w-8"
+              >
+                {n}
+              </Button>
+            ))}
+            <Button
+              variant="outline"
+              size="sm"
+              onClick={() => setPage(p => Math.min(totalPages, p + 1))}
+              disabled={page === totalPages}
+            >
+              <ChevronRight className="w-4 h-4" />
+            </Button>
+          </div>
+        )}
       </main>
     </div>
   )
