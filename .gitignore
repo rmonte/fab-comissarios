@@ -26,3 +26,4 @@ dist-ssr
 # PWA generated files
 sw.js
 workbox-*.js
+temp/
