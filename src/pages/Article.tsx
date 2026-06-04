@@ -12,7 +12,6 @@ import {
 import { getBySlug, articles, categoryNames } from '@/lib/content'
 import { ArrowLeft, AlertTriangle, BookOpen } from 'lucide-react'
 import logo from '@/images/logo.webp'
-import BottomNav from '@/components/BottomNav'
 
 const categoryMeta: Record<string, { icon: typeof AlertTriangle; color: string; strip: string }> = {
   emergencia: { icon: AlertTriangle, color: 'text-red-600', strip: 'bg-red-500' },
@@ -73,7 +72,6 @@ export default function Article() {
       <div className="min-h-screen flex flex-col items-center justify-center gap-4 px-4">
         <p className="text-muted-foreground">Procedimento não encontrado.</p>
         <Button variant="outline" onClick={() => navigate(-1)}>Voltar</Button>
-        <BottomNav />
       </div>
     )
   }
@@ -90,7 +88,7 @@ export default function Article() {
     .slice(0, 4)
 
   return (
-    <div className="min-h-screen bg-background pb-20">
+    <div className="min-h-screen bg-background ">
 
       {/* Header — igual à Home mas sem busca */}
       <header className="bg-primary text-primary-foreground">
@@ -204,7 +202,6 @@ export default function Article() {
         </section>
       )}
 
-      <BottomNav />
     </div>
   )
 }

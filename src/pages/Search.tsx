@@ -7,7 +7,6 @@ import { Card, CardContent } from '@/components/ui/card'
 import { Separator } from '@/components/ui/separator'
 import { articles, categoryNames } from '@/lib/content'
 import { Search as SearchIcon, AlertTriangle, BookOpen } from 'lucide-react'
-import BottomNav from '@/components/BottomNav'
 
 const fuse = new Fuse(articles, {
   keys: ['title', 'tags', 'content'],
@@ -44,7 +43,7 @@ export default function Search() {
   }, [results])
 
   return (
-    <div className="min-h-screen bg-background pb-20">
+    <div className="min-h-screen bg-background ">
       <header className="bg-primary text-primary-foreground sticky top-0 z-10">
         <div className="max-w-3xl mx-auto px-4 pt-10 pb-4">
           <h1 className="text-lg font-bold mb-3">Busca</h1>
@@ -108,7 +107,6 @@ export default function Search() {
         </div>
       </main>
 
-      <BottomNav />
     </div>
   )
 }

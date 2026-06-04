@@ -3,7 +3,6 @@ import { Badge } from '@/components/ui/badge'
 import { Card, CardContent } from '@/components/ui/card'
 import { emergencias, tecnicos, categoryNames } from '@/lib/content'
 import { AlertTriangle, BookOpen, FileText } from 'lucide-react'
-import BottomNav from '@/components/BottomNav'
 
 const categoryMeta: Record<string, { icon: typeof AlertTriangle; color: string }> = {
   emergencia: { icon: AlertTriangle, color: 'text-red-600' },
@@ -19,7 +18,7 @@ export default function Category() {
   const label = categoryNames[type ?? ''] ?? type ?? ''
 
   return (
-    <div className="min-h-screen bg-background pb-20">
+    <div className="min-h-screen bg-background ">
       <header className="bg-primary text-primary-foreground px-4 pt-10 pb-5">
         <div className="max-w-3xl mx-auto">
           <div className="flex items-center gap-2 mb-1">
@@ -63,7 +62,6 @@ export default function Category() {
         )}
       </main>
 
-      <BottomNav />
     </div>
   )
 }
