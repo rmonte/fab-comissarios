@@ -55,14 +55,14 @@ aircraft: [todos]
 
 | # | Procedimento | Topicos |
 |---|---|---|
-| 01 | Abortiva de Decolagem | Causas · Evacuacao requerida e nao requerida |
-| 02 | Despressurizacao | Causas · Tipos · Alertas automaticos · Procedimento |
-| 03 | Amerrissagem (Ditching) | Pouso preparado · Pouso nao preparado · KLM+E |
-| 04 | Aterrissagem de Emergencia | 16 etapas · Nao preparada · Piloto incapacitado |
-| 05 | PAX Indisciplinado | Contencao preparada (A-L-C) · Nao preparada (C-L-A) |
-| 06 | Fogo ou Fumaca a Bordo | Area aberta · Area confinada · PED · Fumaca |
-| 07 | Emergencia Medica a Bordo | SAMPLE · DFaFI · CSM · RICE · RCP · Heimlich |
-| 08 | Equipamentos de Emergencia e Sobrevivencia | KLM+E · A-F-A+A · ESAON · 8 dias |
-| 09 | Responsabilidades na Evacuacao | PF · PM · Mecanico · 3P · 4P · Load Masters · Comissarios |
-| 10 | Piloto Incapacitado | Funcao primaria · Afastar assento · Consciente (A-B-C-D) |
-| 11 | Ameaca de Bomba | Identificacao · Acoes subsequentes · LRBL · Apos pouso |
+| 01 | [Abortiva de Decolagem](/artigo/abortiva-decolagem) | Causas · Evacuacao requerida e nao requerida |
+| 02 | [Despressurizacao](/artigo/despressurizacao) | Causas · Tipos · Alertas automaticos · Procedimento |
+| 03 | [Amerrissagem (Ditching)](/artigo/amerrissagem) | Pouso preparado · Pouso nao preparado · KLM+E |
+| 04 | [Aterrissagem de Emergencia](/artigo/aterrissagem) | 16 etapas · Nao preparada · Piloto incapacitado |
+| 05 | [PAX Indisciplinado](/artigo/pax-indisciplinado) | Contencao preparada (A-L-C) · Nao preparada (C-L-A) |
+| 06 | [Fogo ou Fumaca a Bordo](/artigo/fogo-fumaca-bordo) | Area aberta · Area confinada · PED · Fumaca |
+| 07 | [Emergencia Medica a Bordo](/artigo/emergencia-medica) | SAMPLE · DFaFI · CSM · RICE · RCP · Heimlich |
+| 08 | [Equipamentos de Emergencia e Sobrevivencia](/artigo/equipamentos-emergencia) | KLM+E · A-F-A+A · ESAON · 8 dias |
+| 09 | [Responsabilidades na Evacuacao](/artigo/atribuicoes-evacuacao) | PF · PM · Mecanico · 3P · 4P · Load Masters · Comissarios |
+| 10 | [Piloto Incapacitado](/artigo/piloto-incapacitado) | Funcao primaria · Afastar assento · Consciente (A-B-C-D) |
+| 11 | [Ameaca de Bomba](/artigo/ameaca-bomba) | Identificacao · Acoes subsequentes · LRBL · Apos pouso |
