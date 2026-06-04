@@ -9,16 +9,8 @@ import {
   AccordionItem,
   AccordionTrigger,
 } from '@/components/ui/accordion'
-import {
-  Sheet,
-  SheetClose,
-  SheetContent,
-  SheetHeader,
-  SheetTitle,
-  SheetTrigger,
-} from '@/components/ui/sheet'
 import { getBySlug, articles, categoryNames } from '@/lib/content'
-import { ArrowLeft, AlertTriangle, BookOpen, FileText, ChevronRight, ChevronsUpDown, ChevronsDownUp } from 'lucide-react'
+import { ArrowLeft, AlertTriangle, BookOpen, FileText, ChevronsUpDown, ChevronsDownUp } from 'lucide-react'
 import AppHeader from '@/components/AppHeader'
 
 const categoryMeta: Record<string, {
@@ -177,38 +169,15 @@ export default function Article() {
               )}
 
             {pdfUrl && (
-              <Sheet>
-                <SheetTrigger className="flex items-center gap-2 px-3 py-1.5 rounded-lg border border-border bg-card hover:bg-muted/50 transition-colors text-sm font-medium text-foreground shrink-0">
-                  <FileText className="w-4 h-4 text-primary" />
-                  Ver PDF original
-                  <ChevronRight className="w-3.5 h-3.5 text-muted-foreground" />
-                </SheetTrigger>
-                <SheetContent
-                  side="bottom"
-                  showCloseButton={false}
-                  className="p-0 flex flex-col gap-0"
-                  style={{ height: '92dvh' }}
-                >
-                  <SheetHeader className="px-4 py-3 border-b flex-row items-center gap-3 space-y-0 shrink-0">
-                    <SheetClose className="flex items-center gap-1.5 text-sm font-medium text-muted-foreground hover:text-foreground transition-colors shrink-0 cursor-pointer">
-                      <ArrowLeft className="w-4 h-4" />
-                      Fechar
-                    </SheetClose>
-                    <div className="w-px h-4 bg-border shrink-0" />
-                    <FileText className="w-4 h-4 text-primary shrink-0" />
-                    <SheetTitle className="text-sm font-semibold text-left flex-1 truncate">
-                      {article.title}
-                    </SheetTitle>
-                  </SheetHeader>
-                  <div className="flex-1 min-h-0">
-                    <iframe
-                      src={pdfUrl}
-                      className="w-full h-full border-0"
-                      title={`PDF: ${article.title}`}
-                    />
-                  </div>
-                </SheetContent>
-              </Sheet>
+              <a
+                href={pdfUrl}
+                target="_blank"
+                rel="noopener noreferrer"
+                className="flex items-center gap-2 px-3 py-1.5 rounded-lg border border-border bg-card hover:bg-muted/50 transition-colors text-sm font-medium text-foreground shrink-0"
+              >
+                <FileText className="w-4 h-4 text-primary" />
+                Ver PDF original
+              </a>
             )}
             </div>
           </div>
