@@ -2,6 +2,50 @@ import MarkdownIt from 'markdown-it'
 
 const md = new MarkdownIt({ html: false, linkify: true, typographer: true })
 
+function renderFlowLine(line: string): string {
+  const t = line.trim()
+  if (!t) return ''
+  if (/^\[[^\]]+\]$/.test(t))
+    return `<div class="flow-note">${t.slice(1, -1)}</div>`
+  if (/^[A-ZÁÉÍÓÚ][A-ZÁÉÍÓÚ\s\d]+:/.test(t)) {
+    const colon = t.indexOf(':')
+    const label = t.slice(0, colon)
+    const rest = t.slice(colon + 1).trim()
+    return rest
+      ? `<div class="flow-label">${label}: <span class="flow-label-rest">${rest}</span></div>`
+      : `<div class="flow-label">${label}</div>`
+  }
+  if (/^[A-Z0-9]\s*→/.test(t) || t.startsWith('→'))
+    return `<div class="flow-sub">${t}</div>`
+  if (/^\d+\./.test(t))
+    return `<div class="flow-item">${t}</div>`
+  return `<div class="flow-text">${t}</div>`
+}
+
+function transformFlowDiagrams(html: string): string {
+  return html.replace(/<pre><code>([\s\S]*?)<\/code><\/pre>/g, (_, raw) => {
+    const text = raw
+      .replace(/&amp;/g, '&').replace(/&lt;/g, '<').replace(/&gt;/g, '>').trim()
+    const phases = text.split(/\n↓\n/)
+    const steps = phases.map(phase =>
+      `<div class="flow-step">${
+        phase.trim().split('\n').map(renderFlowLine).filter(Boolean).join('')
+      }</div>`
+    )
+    return `<div class="flow-diagram">${steps.join('<div class="flow-arrow">↓</div>')}</div>`
+  })
+}
+
+function transformCallouts(html: string): string {
+  return html.replace(/<blockquote>([\s\S]*?)<\/blockquote>/gi, (match, inner) => {
+    const m = inner.match(/\[!(info|warning|danger|success|note|tip|caution|important)\][ \t]*/i)
+    if (!m) return match
+    const t = m[1].toLowerCase()
+    const cleaned = inner.replace(m[0], '').trim()
+    return `<div class="callout callout-${t}">${cleaned}</div>`
+  })
+}
+
 export interface Article {
   slug: string
   title: string
@@ -9,6 +53,7 @@ export interface Article {
   day?: number
   tags: string[]
   aircraft: string[]
+  pdf?: string
   content: string
   html: string
 }
@@ -54,8 +99,9 @@ function parseArticle(raw: string, filePath: string): Article {
     day: data.day as number | undefined,
     tags: (data.tags as string[]) ?? [],
     aircraft: (data.aircraft as string[]) ?? ['todos'],
+    pdf: data.pdf as string | undefined,
     content,
-    html: md.render(content),
+    html: transformCallouts(transformFlowDiagrams(md.render(content))),
   }
 }
 

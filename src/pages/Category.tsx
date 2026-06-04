@@ -3,6 +3,7 @@ import { Badge } from '@/components/ui/badge'
 import { Card, CardContent } from '@/components/ui/card'
 import { emergencias, tecnicos, categoryNames } from '@/lib/content'
 import { AlertTriangle, BookOpen, FileText } from 'lucide-react'
+import AppHeader from '@/components/AppHeader'
 
 const categoryMeta: Record<string, { icon: typeof AlertTriangle; color: string }> = {
   emergencia: { icon: AlertTriangle, color: 'text-red-600' },
@@ -19,18 +20,16 @@ export default function Category() {
 
   return (
     <div className="min-h-screen bg-background ">
-      <header className="bg-primary text-primary-foreground px-4 pt-10 pb-5">
-        <div className="max-w-3xl mx-auto">
-          <div className="flex items-center gap-2 mb-1">
-            <Icon className="w-4 h-4 opacity-70" />
-            <span className="text-xs font-semibold uppercase tracking-widest opacity-70">{label}</span>
-          </div>
-          <h1 className="text-xl font-bold">{label}</h1>
-          <p className="text-xs opacity-60 mt-1">{items.length} procedimento{items.length !== 1 ? 's' : ''}</p>
+      <AppHeader>
+        <div className="flex items-center gap-2 mb-1">
+          <Icon className="w-4 h-4 opacity-70" />
+          <span className="text-xs font-semibold uppercase tracking-widest opacity-70">{label}</span>
         </div>
-      </header>
+        <h2 className="text-xl font-bold">{label}</h2>
+        <p className="text-xs opacity-60 mt-1">{items.length} procedimento{items.length !== 1 ? 's' : ''}</p>
+      </AppHeader>
 
-      <main className="px-4 py-5 max-w-3xl mx-auto">
+      <main className="px-4 py-5 max-w-7xl mx-auto">
         {items.length === 0 ? (
           <div className="text-center py-16 text-muted-foreground">
             <FileText className="w-10 h-10 mx-auto mb-3 opacity-30" />

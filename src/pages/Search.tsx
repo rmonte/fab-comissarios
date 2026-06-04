@@ -7,6 +7,7 @@ import { Card, CardContent } from '@/components/ui/card'
 import { Separator } from '@/components/ui/separator'
 import { articles, categoryNames } from '@/lib/content'
 import { Search as SearchIcon, AlertTriangle, BookOpen } from 'lucide-react'
+import AppHeader from '@/components/AppHeader'
 
 const fuse = new Fuse(articles, {
   keys: ['title', 'tags', 'content'],
@@ -44,23 +45,20 @@ export default function Search() {
 
   return (
     <div className="min-h-screen bg-background ">
-      <header className="bg-primary text-primary-foreground sticky top-0 z-10">
-        <div className="max-w-3xl mx-auto px-4 pt-10 pb-4">
-          <h1 className="text-lg font-bold mb-3">Busca</h1>
-          <div className="relative">
-            <SearchIcon className="absolute left-3 top-1/2 -translate-y-1/2 w-4 h-4 text-primary/50" />
-            <Input
-              autoFocus
-              placeholder="Buscar procedimento, equipamento, tag..."
-              value={query}
-              onChange={e => setQuery(e.target.value)}
-              className="pl-9 bg-white/95 text-foreground placeholder:text-muted-foreground border-0 shadow-sm"
-            />
-          </div>
+      <AppHeader>
+        <div className="relative">
+          <SearchIcon className="absolute left-3 top-1/2 -translate-y-1/2 w-4 h-4 text-primary/50" />
+          <Input
+            autoFocus
+            placeholder="Buscar procedimento, equipamento, tag..."
+            value={query}
+            onChange={e => setQuery(e.target.value)}
+            className="pl-9 bg-white/95 text-foreground placeholder:text-muted-foreground border-0 shadow-sm"
+          />
         </div>
-      </header>
+      </AppHeader>
 
-      <main className="max-w-3xl mx-auto px-4 py-5">
+      <main className="max-w-7xl mx-auto px-4 py-5">
         <p className="text-xs text-muted-foreground mb-5">
           {query.trim().length >= 2
             ? `${results.length} resultado${results.length !== 1 ? 's' : ''} para "${query}"`

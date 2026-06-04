@@ -1,18 +1,17 @@
 import { useState, useMemo } from 'react'
 import { useNavigate, Link } from 'react-router-dom'
 import { Input } from '@/components/ui/input'
-import { Badge } from '@/components/ui/badge'
 import { Button } from '@/components/ui/button'
 import { Card, CardContent } from '@/components/ui/card'
 import { Search, AlertTriangle, BookOpen, ChevronLeft, ChevronRight } from 'lucide-react'
 import { articles, allTags, allCategories, categoryNames } from '@/lib/content'
-import logo from '@/images/logo.webp'
+import AppHeader from '@/components/AppHeader'
 
 const PAGE_SIZE = 12
 
-const categoryMeta: Record<string, { icon: typeof AlertTriangle; color: string }> = {
-  emergencia: { icon: AlertTriangle, color: 'text-red-600' },
-  tecnico:    { icon: BookOpen,      color: 'text-primary'  },
+const categoryMeta: Record<string, { icon: typeof AlertTriangle; color: string; accent: string; pill: string }> = {
+  emergencia: { icon: AlertTriangle, color: 'text-red-600 dark:text-red-400',  accent: 'border-l-red-400',    pill: 'bg-red-50 text-red-600 dark:bg-red-500/15 dark:text-red-400'   },
+  tecnico:    { icon: BookOpen,      color: 'text-primary',                    accent: 'border-l-primary/40', pill: 'bg-primary/8 text-primary' },
 }
 
 function FilterPill({
@@ -24,7 +23,7 @@ function FilterPill({
       className={`shrink-0 px-3 py-1 rounded-full text-xs font-medium border transition-colors ${
         active
           ? 'bg-primary text-primary-foreground border-primary'
-          : 'bg-white text-muted-foreground border-border hover:border-primary/40'
+          : 'bg-card text-muted-foreground border-border hover:border-primary/40'
       }`}
     >
       {children}
@@ -84,28 +83,17 @@ export default function Home() {
 
   return (
     <div className="min-h-screen bg-background ">
-      <header className="bg-primary text-primary-foreground pt-12 pb-6">
-        <div className="max-w-7xl mx-auto px-4 sm:px-5">
-          <div className="flex items-center gap-4 mb-5">
-            <img src={logo} alt="Insígnia FAB" className="w-14 h-14 object-contain drop-shadow-md" />
-            <div>
-              <p className="text-xs font-semibold uppercase tracking-widest opacity-60">2º/2º GT · FAB</p>
-              <h1 className="text-xl font-bold leading-tight">Manual de Cabine</h1>
-              <p className="text-xs opacity-60 mt-0.5">Consulta de procedimentos</p>
-            </div>
-          </div>
-
-          <form onSubmit={handleSearch} className="relative">
-            <Search className="absolute left-3 top-1/2 -translate-y-1/2 w-4 h-4 text-primary/50" />
-            <Input
-              placeholder="Buscar procedimento..."
-              value={query}
-              onChange={e => { setQuery(e.target.value); resetPage() }}
-              className="pl-9 bg-white/95 text-foreground placeholder:text-muted-foreground border-0 shadow-sm"
-            />
-          </form>
-        </div>
-      </header>
+      <AppHeader>
+        <form onSubmit={handleSearch} className="relative">
+          <Search className="absolute left-3 top-1/2 -translate-y-1/2 w-4 h-4 text-primary/50" />
+          <Input
+            placeholder="Buscar procedimento..."
+            value={query}
+            onChange={e => { setQuery(e.target.value); resetPage() }}
+            className="pl-9 bg-card/95 text-foreground placeholder:text-muted-foreground border-0 shadow-sm"
+          />
+        </form>
+      </AppHeader>
 
       {/* Filtros */}
       <div className="border-b border-border bg-primary/5">
@@ -119,11 +107,25 @@ export default function Home() {
               <FilterPill active={activeCategory === null && !hasFilter} onClick={clearAll}>
                 Todas
               </FilterPill>
-              {allCategories.map(cat => (
-                <FilterPill key={cat} active={activeCategory === cat} onClick={() => selectCategory(cat)}>
-                  {categoryNames[cat] ?? cat}
-                </FilterPill>
-              ))}
+              {allCategories.map(cat => {
+                const meta = categoryMeta[cat] ?? categoryMeta.tecnico
+                const Icon = meta.icon
+                const isActive = activeCategory === cat
+                return (
+                  <button
+                    key={cat}
+                    onClick={() => selectCategory(cat)}
+                    className={`shrink-0 flex items-center gap-1.5 px-3 py-1 rounded-full text-[11px] font-semibold uppercase tracking-wide border transition-all ${
+                      isActive
+                        ? `${meta.pill} border-transparent`
+                        : 'bg-card text-muted-foreground border-border hover:border-primary/40'
+                    }`}
+                  >
+                    <Icon className="w-3 h-3 shrink-0" />
+                    {categoryNames[cat] ?? cat}
+                  </button>
+                )
+              })}
             </div>
           </div>
 
@@ -156,23 +158,23 @@ export default function Home() {
             const Icon = meta.icon
             return (
               <Link key={article.slug} to={`/artigo/${article.slug}`}>
-                <Card className="h-full border border-border hover:shadow-md hover:border-primary/30 transition-all">
-                  <CardContent className="p-4 flex flex-col gap-2 h-full">
-                    <div className="flex items-center gap-1.5">
-                      <Icon className={`w-3.5 h-3.5 shrink-0 ${meta.color}`} />
-                      <span className={`text-xs font-medium ${meta.color}`}>
-                        {categoryNames[article.category] ?? article.category}
-                      </span>
+                <Card className={`h-full border-l-4 ${meta.accent} hover:shadow-lg hover:scale-[1.01] transition-all duration-200 group`}>
+                  <CardContent className="p-4 flex flex-col gap-3 h-full">
+                    <div className={`flex items-center gap-1.5 self-start px-2 py-0.5 rounded-full text-[11px] font-semibold uppercase tracking-wide ${meta.pill}`}>
+                      <Icon className="w-3 h-3 shrink-0" />
+                      {categoryNames[article.category] ?? article.category}
                     </div>
-                    <p className="text-sm font-semibold leading-snug flex-1">{article.title}</p>
-                    <div className="flex flex-wrap gap-1 mt-auto pt-1">
+                    <p className="text-sm font-semibold leading-snug flex-1 group-hover:text-primary transition-colors">
+                      {article.title}
+                    </p>
+                    <div className="flex flex-wrap gap-1">
                       {article.tags.slice(0, 3).map(tag => (
-                        <Badge key={tag} variant="secondary" className="text-xs px-1.5 py-0">
+                        <span key={tag} className="text-[11px] px-2 py-0.5 rounded-full bg-muted text-muted-foreground font-medium">
                           {tag}
-                        </Badge>
+                        </span>
                       ))}
                       {article.tags.length > 3 && (
-                        <span className="text-xs text-muted-foreground">+{article.tags.length - 3}</span>
+                        <span className="text-[11px] text-muted-foreground">+{article.tags.length - 3}</span>
                       )}
                     </div>
                   </CardContent>
