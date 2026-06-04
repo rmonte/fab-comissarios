@@ -3,6 +3,7 @@ import { useNavigate, Link } from 'react-router-dom'
 import { Input } from '@/components/ui/input'
 import { Badge } from '@/components/ui/badge'
 import { Button } from '@/components/ui/button'
+import BottomNav from '@/components/BottomNav'
 import { Card, CardContent } from '@/components/ui/card'
 import { Search, AlertTriangle, BookOpen, ChevronLeft, ChevronRight } from 'lucide-react'
 import { articles, allTags, allCategories, categoryNames } from '@/lib/content'
@@ -83,7 +84,7 @@ export default function Home() {
   const hasFilter = activeCategory !== null || activeTag !== null
 
   return (
-    <div className="min-h-screen bg-background">
+    <div className="min-h-screen bg-background pb-20">
       <header className="bg-primary text-primary-foreground pt-12 pb-6">
         <div className="max-w-7xl mx-auto px-4 sm:px-5">
           <div className="flex items-center gap-4 mb-5">
@@ -198,6 +199,7 @@ export default function Home() {
           </div>
         )}
       </main>
+      <BottomNav />
     </div>
   )
 }
