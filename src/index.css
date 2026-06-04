@@ -85,6 +85,136 @@
   --sidebar-ring: oklch(0.55 0.09 258);
 }
 
+/* Header sempre navy — independente do tema */
+.app-header { background: oklch(0.27 0.09 258); color: oklch(0.98 0 0); }
+html.dark .app-header { background: oklch(0.20 0.09 258); }
+
+html.dark {
+  /* Primary vira azul médio-claro: legível como texto E como ícone */
+  --primary: oklch(0.68 0.14 258);
+  --primary-foreground: oklch(0.10 0.02 258);
+
+  --background: oklch(0.10 0.015 258);
+  --foreground: oklch(0.93 0.008 258);
+
+  --card: oklch(0.21 0.022 258);
+  --card-foreground: oklch(0.93 0.008 258);
+
+  --popover: oklch(0.21 0.022 258);
+  --popover-foreground: oklch(0.93 0.008 258);
+
+  --secondary: oklch(0.22 0.022 258);
+  --secondary-foreground: oklch(0.93 0.008 258);
+
+  --muted: oklch(0.23 0.022 258);
+  --muted-foreground: oklch(0.72 0.018 250);
+
+  --accent: oklch(0.22 0.022 258);
+  --accent-foreground: oklch(0.93 0.008 258);
+
+  --border: oklch(0.26 0.028 258);
+  --input: oklch(0.26 0.028 258);
+  --ring: oklch(0.68 0.14 258);
+}
+
+@layer utilities {
+  .callout {
+    border-left: 4px solid;
+    padding: 0.75rem 1rem;
+    border-radius: 0 0.5rem 0.5rem 0;
+    margin: 1rem 0;
+    font-size: 0.9375rem;
+    line-height: 1.6;
+  }
+  .callout p, .callout strong, .callout li { color: inherit; margin: 0; font-size: inherit; }
+  .callout-danger    { border-color: #ef4444; background: #fef2f2; color: #991b1b; }
+  .callout-warning   { border-color: #f59e0b; background: #fffbeb; color: #92400e; }
+  .callout-info      { border-color: #3b82f6; background: #eff6ff; color: #1e40af; }
+  .callout-success   { border-color: #22c55e; background: #f0fdf4; color: #166534; }
+  .callout-note,
+  .callout-tip       { border-color: #8b5cf6; background: #f5f3ff; color: #5b21b6; }
+  .callout-caution,
+  .callout-important { border-color: #f97316; background: #fff7ed; color: #9a3412; }
+
+  .flow-diagram {
+    display: flex;
+    flex-direction: column;
+    margin: 0.5rem 0;
+    font-size: 0.875rem;
+    line-height: 1.5;
+  }
+  .flow-step {
+    background: #f8fafc;
+    border: 1px solid #e2e8f0;
+    border-radius: 0.5rem;
+    padding: 0.75rem 1rem;
+    display: flex;
+    flex-direction: column;
+    gap: 0.3rem;
+  }
+  .flow-arrow {
+    align-self: center;
+    color: oklch(0.27 0.09 258);
+    font-size: 1.125rem;
+    font-weight: 700;
+    padding: 0.15rem 0;
+    line-height: 1;
+  }
+  .flow-note {
+    background: #1e293b;
+    color: #f1f5f9;
+    padding: 0.3rem 0.75rem;
+    border-radius: 0.375rem;
+    font-weight: 700;
+    text-align: center;
+    font-size: 0.8125rem;
+    letter-spacing: 0.05em;
+  }
+  .flow-label {
+    font-weight: 700;
+    color: oklch(0.27 0.09 258);
+    font-size: 0.8125rem;
+    text-transform: uppercase;
+    letter-spacing: 0.04em;
+    margin-top: 0.25rem;
+  }
+  .flow-label:first-child { margin-top: 0; }
+  .flow-label-rest {
+    font-weight: 500;
+    text-transform: none;
+    letter-spacing: 0;
+    color: #334155;
+    font-size: 0.875rem;
+  }
+  .flow-sub {
+    color: #475569;
+    padding-left: 0.75rem;
+    border-left: 2px solid #cbd5e1;
+    font-size: 0.875rem;
+  }
+  .flow-item { color: #1e293b; font-size: 0.875rem; }
+  .flow-text { color: #334155; font-size: 0.875rem; }
+
+  html.dark .callout-danger    { border-color: #f87171; background: oklch(0.18 0.06 20);  color: #fca5a5; }
+  html.dark .callout-warning   { border-color: #fbbf24; background: oklch(0.18 0.06 60);  color: #fde68a; }
+  html.dark .callout-info      { border-color: #60a5fa; background: oklch(0.18 0.04 250); color: #93c5fd; }
+  html.dark .callout-success   { border-color: #4ade80; background: oklch(0.16 0.05 155); color: #86efac; }
+  html.dark .callout-note,
+  html.dark .callout-tip       { border-color: #a78bfa; background: oklch(0.18 0.05 290); color: #c4b5fd; }
+  html.dark .callout-caution,
+  html.dark .callout-important { border-color: #fb923c; background: oklch(0.18 0.06 45);  color: #fdba74; }
+  html.dark .callout p, html.dark .callout strong, html.dark .callout li { color: inherit; }
+
+  html.dark .flow-step         { background: oklch(0.21 0.022 258); border-color: oklch(0.28 0.030 258); }
+  html.dark .flow-arrow        { color: oklch(0.68 0.14 258); }
+  html.dark .flow-note         { background: oklch(0.93 0.008 258); color: oklch(0.12 0.02 258); }
+  html.dark .flow-label        { color: oklch(0.68 0.14 258); }
+  html.dark .flow-label-rest   { color: oklch(0.78 0.018 258); }
+  html.dark .flow-sub          { color: oklch(0.66 0.018 258); border-color: oklch(0.32 0.032 258); }
+  html.dark .flow-item         { color: oklch(0.85 0.010 258); }
+  html.dark .flow-text         { color: oklch(0.78 0.018 258); }
+}
+
 @layer base {
   * {
     @apply border-border outline-ring/50;
