@@ -2,6 +2,21 @@
 <html lang="en">
   <head>
     <meta charset="UTF-8" />
+    <script>
+      // Restaura path redirecionado pelo 404.html do GitHub Pages
+      ;(function() {
+        var p = window.location.search.match(/[?&]p=([^&]*)/)
+        if (p) {
+          var path = decodeURIComponent(p[1].replace(/~and~/g, '&'))
+          var q = window.location.search.match(/[?&]q=([^&]*)/)
+          window.history.replaceState(null, null,
+            window.location.pathname.slice(0, -1) + path +
+            (q ? '?' + decodeURIComponent(q[1].replace(/~and~/g, '&')) : '') +
+            window.location.hash
+          )
+        }
+      })()
+    </script>
     <link rel="icon" type="image/webp" href="/favicon.webp" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <meta name="description" content="Consulta de procedimentos de emergência e dados técnicos — 2º/2º GT FAB" />

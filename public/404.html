@@ -1,0 +1,20 @@
+<!doctype html>
+<html>
+  <head>
+    <meta charset="utf-8" />
+    <script>
+      // Redireciona para index.html preservando o path como query string
+      var seg = window.location.pathname.split('/').length - 1
+      var path = window.location.pathname.slice(
+        window.location.pathname.split('/').slice(0, seg + 1).join('/').length
+      )
+      window.location.replace(
+        window.location.protocol + '//' + window.location.host +
+        window.location.pathname.split('/').slice(0, seg + 1).join('/') + '/' +
+        '?p=/' + path.replace(/&/g, '~and~') +
+        (window.location.search ? '&q=' + window.location.search.slice(1).replace(/&/g, '~and~') : '') +
+        window.location.hash
+      )
+    </script>
+  </head>
+</html>

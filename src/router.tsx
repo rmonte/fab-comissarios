@@ -9,4 +9,4 @@ export const router = createBrowserRouter([
   { path: '/busca', element: <Search /> },
   { path: '/artigo/:slug', element: <Article /> },
   { path: '/categoria/:type', element: <Category /> },
-])
+], { basename: import.meta.env.BASE_URL })
