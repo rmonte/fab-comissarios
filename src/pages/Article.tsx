@@ -130,25 +130,24 @@ export default function Article() {
     <div className="min-h-screen bg-background">
 
       {/* Cabeçalho do sistema */}
-      <AppHeader action={
-        <Button
-          variant="ghost"
-          size="sm"
-          onClick={() => navigate(-1)}
-          className="text-white/70 hover:text-white hover:bg-white/10 gap-1.5"
-        >
-          <ArrowLeft className="w-4 h-4" />
-          Voltar
-        </Button>
-      } />
+      <AppHeader />
 
       {/* Identidade do artigo */}
       <div className="bg-card border-b border-border">
         <div className="max-w-7xl mx-auto px-4 py-6">
 
-          <div className={`inline-flex items-center gap-1.5 px-2.5 py-1 rounded-full text-[11px] font-semibold uppercase tracking-wide mb-4 ${meta.headerPill}`}>
-            <Icon className="w-3 h-3 shrink-0" />
-            {catLabel}
+          <div className="flex items-center justify-between mb-4">
+            <div className={`inline-flex items-center gap-1.5 px-2.5 py-1 rounded-full text-[11px] font-semibold uppercase tracking-wide ${meta.headerPill}`}>
+              <Icon className="w-3 h-3 shrink-0" />
+              {catLabel}
+            </div>
+            <button
+              onClick={() => navigate(-1)}
+              className="flex items-center gap-1.5 text-sm font-medium text-muted-foreground hover:text-foreground transition-colors"
+            >
+              <ArrowLeft className="w-4 h-4" />
+              Voltar
+            </button>
           </div>
 
           <h1 className="text-2xl font-bold leading-tight text-foreground mb-4">{article.title}</h1>
