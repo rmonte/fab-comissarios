@@ -53,7 +53,7 @@ export default function Search() {
             placeholder="Buscar procedimento, equipamento, tag..."
             value={query}
             onChange={e => setQuery(e.target.value)}
-            className="pl-9 bg-white/95 text-foreground placeholder:text-muted-foreground border-0 shadow-sm"
+            className="pl-9 bg-white/95 dark:bg-white/12 text-foreground dark:text-white placeholder:text-muted-foreground dark:placeholder:text-white/40 border-0 dark:border dark:border-white/15 shadow-sm"
           />
         </div>
       </AppHeader>

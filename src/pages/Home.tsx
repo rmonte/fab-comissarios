@@ -90,7 +90,7 @@ export default function Home() {
             placeholder="Buscar procedimento..."
             value={query}
             onChange={e => { setQuery(e.target.value); resetPage() }}
-            className="pl-9 bg-card/95 text-foreground placeholder:text-muted-foreground border-0 shadow-sm"
+            className="pl-9 bg-white/95 dark:bg-white/12 text-foreground dark:text-white placeholder:text-muted-foreground dark:placeholder:text-white/40 border-0 dark:border dark:border-white/15 shadow-sm"
           />
         </form>
       </AppHeader>
