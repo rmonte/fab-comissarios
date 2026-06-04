@@ -27,7 +27,7 @@ function transformFlowDiagrams(html: string): string {
     const text = raw
       .replace(/&amp;/g, '&').replace(/&lt;/g, '<').replace(/&gt;/g, '>').trim()
     const phases = text.split(/\n↓\n/)
-    const steps = phases.map(phase =>
+    const steps = phases.map((phase: string) =>
       `<div class="flow-step">${
         phase.trim().split('\n').map(renderFlowLine).filter(Boolean).join('')
       }</div>`
