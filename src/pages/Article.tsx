@@ -68,11 +68,12 @@ const proseClasses = `
   prose-ol:my-3 prose-ol:list-decimal prose-ol:marker:text-primary/60 prose-ol:marker:font-semibold
   prose-strong:font-bold prose-strong:text-foreground
   prose-a:text-primary prose-a:font-semibold prose-a:no-underline hover:prose-a:underline
-  prose-table:text-sm prose-table:w-full prose-table:border-collapse
-  prose-thead:bg-primary prose-thead:text-primary-foreground
-  prose-th:text-left prose-th:font-semibold prose-th:px-3 prose-th:py-2 prose-th:text-xs prose-th:uppercase prose-th:tracking-wide
-  prose-td:px-3 prose-td:py-2 prose-td:border prose-td:border-border prose-td:text-muted-foreground
-  prose-tr:even:bg-muted/40
+  prose-table:text-sm prose-table:w-full prose-table:border-collapse prose-table:my-4
+  prose-thead:bg-muted/60
+  prose-th:text-left prose-th:font-semibold prose-th:px-3 prose-th:py-2 prose-th:text-xs prose-th:uppercase prose-th:tracking-wide prose-th:text-foreground prose-th:border-b-2 prose-th:border-border
+  prose-td:px-3 prose-td:py-2 prose-td:border-b prose-td:border-border prose-td:text-muted-foreground
+  prose-tr:last:prose-td:border-b-0
+  prose-tr:even:bg-muted/30
   prose-blockquote:not-italic prose-blockquote:border-l-4 prose-blockquote:border-amber-400
   prose-blockquote:bg-amber-50 prose-blockquote:px-4 prose-blockquote:py-3 prose-blockquote:rounded-r-lg
   prose-blockquote:text-[15px] prose-blockquote:text-amber-900 prose-blockquote:my-4

@@ -215,6 +215,9 @@ html.dark {
   html.dark .flow-text         { color: oklch(0.78 0.018 258); }
 }
 
+/* Tabelas responsivas dentro do prose */
+.prose table { display: block; overflow-x: auto; -webkit-overflow-scrolling: touch; }
+
 @layer base {
   * {
     @apply border-border outline-ring/50;
