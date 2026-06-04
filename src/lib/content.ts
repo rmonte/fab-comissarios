@@ -1,4 +1,3 @@
-import matter from 'gray-matter'
 import MarkdownIt from 'markdown-it'
 
 const md = new MarkdownIt({ html: false, linkify: true, typographer: true })
@@ -14,19 +13,47 @@ export interface Article {
   html: string
 }
 
+function parseFrontmatter(raw: string): { data: Record<string, unknown>; content: string } {
+  if (!raw.startsWith('---')) return { data: {}, content: raw }
+
+  const end = raw.indexOf('\n---', 3)
+  if (end === -1) return { data: {}, content: raw }
+
+  const yaml = raw.slice(4, end).trim()
+  const content = raw.slice(end + 4).trim()
+  const data: Record<string, unknown> = {}
+
+  for (const line of yaml.split('\n')) {
+    const colon = line.indexOf(':')
+    if (colon === -1) continue
+    const key = line.slice(0, colon).trim()
+    const value = line.slice(colon + 1).trim()
+
+    if (value.startsWith('[') && value.endsWith(']')) {
+      data[key] = value.slice(1, -1).split(',').map(v => v.trim().replace(/^['"]|['"]$/g, ''))
+    } else if (!isNaN(Number(value)) && value !== '') {
+      data[key] = Number(value)
+    } else {
+      data[key] = value.replace(/^['"]|['"]$/g, '')
+    }
+  }
+
+  return { data, content }
+}
+
 const modules = import.meta.glob('../content/**/*.md', { query: '?raw', import: 'default', eager: true }) as Record<string, string>
 
 function parseArticle(raw: string, filePath: string): Article {
-  const { data, content } = matter(raw)
-  const slug = data.slug ?? filePath.split('/').pop()?.replace('.md', '') ?? ''
+  const { data, content } = parseFrontmatter(raw)
+  const slug = (data.slug as string) ?? filePath.split('/').pop()?.replace('.md', '') ?? ''
 
   return {
     slug,
-    title: data.title ?? slug,
-    category: data.category ?? 'emergencia',
-    day: data.day,
-    tags: data.tags ?? [],
-    aircraft: data.aircraft ?? ['todos'],
+    title: (data.title as string) ?? slug,
+    category: (data.category as 'emergencia' | 'tecnico') ?? 'emergencia',
+    day: data.day as number | undefined,
+    tags: (data.tags as string[]) ?? [],
+    aircraft: (data.aircraft as string[]) ?? ['todos'],
     content,
     html: md.render(content),
   }
@@ -47,11 +74,3 @@ export function getBySlug(slug: string): Article | undefined {
   return articles.find(a => a.slug === slug)
 }
 
-export function getByDay(day: number): Article | undefined {
-  return emergencias.find(a => a.day === day)
-}
-
-export function getTodayEmergency(): Article | undefined {
-  const day = new Date().getDate()
-  return getByDay(day) ?? getByDay(((day - 1) % 10) + 1)
-}

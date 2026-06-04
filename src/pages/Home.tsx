@@ -1,83 +1,79 @@
-import { Link } from 'react-router-dom'
-import { Card, CardContent, CardHeader, CardTitle } from '@/components/ui/card'
-import { Badge } from '@/components/ui/badge'
-import { Button } from '@/components/ui/button'
-import { Separator } from '@/components/ui/separator'
-import { emergencias, getTodayEmergency } from '@/lib/content'
+import { useNavigate } from 'react-router-dom'
+import { Input } from '@/components/ui/input'
+import { Card, CardContent } from '@/components/ui/card'
 import { AlertTriangle, BookOpen, Search } from 'lucide-react'
+import { useState } from 'react'
+
+const categories = [
+  {
+    type: 'emergencia',
+    label: 'Emergências',
+    description: 'Procedimentos de emergência e evacuação',
+    icon: AlertTriangle,
+    color: 'text-red-600',
+    bg: 'bg-red-50',
+    border: 'border-red-200',
+  },
+  {
+    type: 'tecnico',
+    label: 'Dados Técnicos',
+    description: 'Fichas técnicas por aeronave',
+    icon: BookOpen,
+    color: 'text-blue-700',
+    bg: 'bg-blue-50',
+    border: 'border-blue-200',
+  },
+]
 
 export default function Home() {
-  const today = new Date().getDate()
-  const todayArticle = getTodayEmergency()
+  const navigate = useNavigate()
+  const [query, setQuery] = useState('')
+
+  function handleSearch(e: React.FormEvent) {
+    e.preventDefault()
+    if (query.trim().length >= 2) navigate(`/busca?q=${encodeURIComponent(query.trim())}`)
+  }
 
   return (
     <div className="min-h-screen bg-background">
-      <header className="bg-primary text-primary-foreground px-4 pt-10 pb-6">
-        <div className="flex items-center gap-2 mb-1">
-          <AlertTriangle className="w-5 h-5" />
-          <span className="text-sm font-medium uppercase tracking-widest opacity-80">2º/2º GT — FAB</span>
-        </div>
-        <h1 className="text-2xl font-bold">Emergência do Dia</h1>
-        <p className="text-sm opacity-70 mt-1">Dia {today}</p>
+      <header className="bg-primary text-primary-foreground px-5 pt-12 pb-8">
+        <p className="text-xs font-medium uppercase tracking-widest opacity-60 mb-1">2º/2º GT · FAB</p>
+        <h1 className="text-2xl font-bold">Manual de Cabine</h1>
+        <p className="text-sm opacity-70 mt-1">Consulta rápida de procedimentos</p>
+
+        <form onSubmit={handleSearch} className="mt-5 relative">
+          <Search className="absolute left-3 top-1/2 -translate-y-1/2 w-4 h-4 text-muted-foreground" />
+          <Input
+            placeholder="Buscar procedimento..."
+            value={query}
+            onChange={e => setQuery(e.target.value)}
+            className="pl-9 bg-white text-foreground placeholder:text-muted-foreground"
+          />
+        </form>
       </header>
 
-      <main className="px-4 py-6 space-y-6 max-w-2xl mx-auto">
-        {todayArticle && (
-          <Link to={`/artigo/${todayArticle.slug}`}>
-            <Card className="border-2 border-primary shadow-md">
-              <CardHeader className="pb-2">
-                <div className="flex items-center justify-between">
-                  <Badge variant="default" className="text-xs">Hoje — Dia {today}</Badge>
+      <main className="px-4 py-6 max-w-2xl mx-auto space-y-3">
+        <p className="text-xs font-semibold uppercase tracking-wide text-muted-foreground px-1">Categorias</p>
+
+        {categories.map(({ type, label, description, icon: Icon, color, bg, border }) => (
+          <button
+            key={type}
+            onClick={() => navigate(`/categoria/${type}`)}
+            className="w-full text-left"
+          >
+            <Card className={`border ${border} hover:shadow-md transition-shadow`}>
+              <CardContent className="flex items-center gap-4 py-4">
+                <div className={`${bg} ${color} p-3 rounded-xl`}>
+                  <Icon className="w-5 h-5" />
                 </div>
-                <CardTitle className="text-xl mt-2">{todayArticle.title}</CardTitle>
-              </CardHeader>
-              <CardContent>
-                <div className="flex flex-wrap gap-1 mb-3">
-                  {todayArticle.tags.map(tag => (
-                    <Badge key={tag} variant="secondary" className="text-xs">{tag}</Badge>
-                  ))}
+                <div>
+                  <p className="font-semibold text-sm">{label}</p>
+                  <p className="text-xs text-muted-foreground mt-0.5">{description}</p>
                 </div>
-                <Button className="w-full mt-1">Ver procedimento completo</Button>
               </CardContent>
             </Card>
-          </Link>
-        )}
-
-        <div className="flex gap-3">
-          <Link to="/busca" className="flex-1">
-            <Button variant="outline" className="w-full gap-2">
-              <Search className="w-4 h-4" />
-              Busca rápida
-            </Button>
-          </Link>
-          <Link to="/categoria/tecnico" className="flex-1">
-            <Button variant="outline" className="w-full gap-2">
-              <BookOpen className="w-4 h-4" />
-              Dados técnicos
-            </Button>
-          </Link>
-        </div>
-
-        <Separator />
-
-        <div>
-          <h2 className="text-sm font-semibold uppercase tracking-wide text-muted-foreground mb-3">
-            Calendário de Emergências
-          </h2>
-          <div className="grid grid-cols-1 gap-2">
-            {emergencias.map(article => (
-              <Link key={article.slug} to={`/artigo/${article.slug}`}>
-                <div className={`flex items-center gap-3 p-3 rounded-lg border transition-colors hover:bg-muted ${article.day === today ? 'border-primary bg-primary/5' : 'border-border'}`}>
-                  <span className={`text-sm font-bold w-7 text-center ${article.day === today ? 'text-primary' : 'text-muted-foreground'}`}>
-                    {String(article.day).padStart(2, '0')}
-                  </span>
-                  <span className="text-sm font-medium flex-1">{article.title}</span>
-                  {article.day === today && <Badge variant="default" className="text-xs">Hoje</Badge>}
-                </div>
-              </Link>
-            ))}
-          </div>
-        </div>
+          </button>
+        ))}
       </main>
     </div>
   )

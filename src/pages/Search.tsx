@@ -1,5 +1,5 @@
-import { useState, useMemo } from 'react'
-import { Link } from 'react-router-dom'
+import { useState, useMemo, useEffect } from 'react'
+import { Link, useSearchParams } from 'react-router-dom'
 import Fuse from 'fuse.js'
 import { Input } from '@/components/ui/input'
 import { Badge } from '@/components/ui/badge'
@@ -13,7 +13,13 @@ const fuse = new Fuse(articles, {
 })
 
 export default function Search() {
-  const [query, setQuery] = useState('')
+  const [searchParams] = useSearchParams()
+  const [query, setQuery] = useState(searchParams.get('q') ?? '')
+
+  useEffect(() => {
+    const q = searchParams.get('q')
+    if (q) setQuery(q)
+  }, [searchParams])
 
   const results = useMemo(() => {
     if (query.trim().length < 2) return articles
@@ -43,7 +49,9 @@ export default function Search() {
 
       <main className="px-4 py-4 max-w-2xl mx-auto">
         <p className="text-xs text-muted-foreground mb-3">
-          {results.length} resultado{results.length !== 1 ? 's' : ''}
+          {query.trim().length >= 2
+            ? `${results.length} resultado${results.length !== 1 ? 's' : ''} para "${query}"`
+            : `${results.length} procedimentos`}
         </p>
         <div className="space-y-2">
           {results.map(article => (
